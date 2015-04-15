@@ -7,6 +7,7 @@
 //
 
 #import "ADPLibraryViewController.h"
+#import "ADPBook.h"
 
 @interface ADPLibraryViewController ()
 
@@ -26,14 +27,33 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(UITableViewCell *)tableView:(UITableView *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    // Averiguar cual es la libreta
+    ADPBook *book = [self.fetchedResultsController
+                       objectAtIndexPath:indexPath];
+    
+    // Crear una celda
+    static NSString *cellID = @"notebookCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleSubtitle
+                reuseIdentifier:cellID];
+    }
+    
+    // Configurarla (sincronizar libreta -> celda)
+    //cell.imageView.image = book.image;
+    cell.textLabel.text = book.title;
+    cell.detailTextLabel.text = book.authorsWithNameAndSeparate;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    // Devolverla
+    return cell;
+    
+    
 }
-*/
 
 @end

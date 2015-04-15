@@ -8,6 +8,16 @@
 
 @implementation ADPAuthor
 
-// Custom logic goes here.
++(instancetype)  initWithName: (NSString *)name
+                      context: (NSManagedObjectContext * ) context{
+    
+    
+    ADPAuthor *author = [ADPAuthor insertInManagedObjectContext:context];
+    author.name = name;
+    
+    return author;
+    
+}
+
 
 @end

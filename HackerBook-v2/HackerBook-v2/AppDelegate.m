@@ -27,7 +27,10 @@
     //Creamos una instancia del stack
     self.stack = [AGTCoreDataStack coreDataStackWithModelName:@"Model"];
     
-    //Creamos datos chorras
+    //Descargamos los datos y Creamos el modelo
+#warning Poner primera vez
+    [self didRecieveData];
+    
     
     //Un fetchRequest
     NSFetchRequest *fetchReq = [NSFetchRequest fetchRequestWithEntityName:[ADPBook entityName]];
@@ -82,6 +85,98 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+- (void) didRecieveData{
+    
+    NSURL *urlJson = [NSURL URLWithString:@"https://t.co/K9ziV0z3SJ"];
+    
+    NSData *data = [NSData dataWithContentsOfURL:urlJson];
+    
+    [self saveDataIntoSandbox: (NSData *) data];
+    
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:0
+                                                           error:nil];
+    [self saveImagesIntoDcouments: (NSDictionary *) json];
+    
+    [self cargarDatosEnModelo: (NSDictionary *) json];
+}
+
+-(void) saveDataIntoSandbox: (NSData *) data{
+    
+    NSString  *folderHackerBook = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/HackerBook/Data/"];
+    NSError *err;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager createDirectoryAtPath:folderHackerBook withIntermediateDirectories:YES attributes:nil error:&err];
+    
+    NSMutableString *namFile = [[NSMutableString alloc] init];
+    [namFile appendString:@"Documents/HackerBook/Data/"];
+    [namFile appendString:@"JSON.txt"];
+    
+    NSString *jsonFile = [NSHomeDirectory() stringByAppendingPathComponent:namFile];
+    
+    
+    
+    [data writeToFile:jsonFile atomically:YES];
+    
+}
+
+-(void) saveImagesIntoDcouments: (NSDictionary *) json{
+    
+    NSString  *folderHackerBook = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/HackerBook/Pictures/"];
+    NSError *err;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager createDirectoryAtPath:folderHackerBook withIntermediateDirectories:YES attributes:nil error:&err];
+    
+    
+    
+    NSDictionary *dictobj = json;
+    for (id key in dictobj)
+    {
+        NSDictionary *value = key;
+        //      [book11 setTitulo:[value objectForKey:@"pdf_url"]];
+        
+        
+        NSData *bookImage = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[[value objectForKey:@"image_url"] description]]];
+        
+        //Guardamos la imagen con el nombre del libro + jpg
+        NSMutableString *nombreLibro = [[NSMutableString alloc] init];
+        [nombreLibro appendString:@"Documents/HackerBook/Pictures/"];
+        [nombreLibro appendString:[value objectForKey:@"title"]];
+        [nombreLibro appendString:@".jpg"];
+        
+        //Averiguar la URL a la carpeta Documents
+        NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:nombreLibro];
+        
+        
+        
+        [bookImage writeToFile:jpgPath atomically:YES];
+        
+    }
+    
+}
+
+-(void) cargarDatosEnModelo: (NSDictionary *) json{
+    
+    
+    
+    NSDictionary *dictobj = json;
+    for (id key in dictobj)
+    {
+        NSDictionary *value = key;
+        
+        ADPBook *book = [ADPBook initWithTitulo:[value objectForKey:@"title"] isFavorite:NO author:[value objectForKey:@"authors"] context:self.stack.context];
+        
+    }
+    
+    // Guardar
+    [self.stack saveWithErrorBlock:^(NSError *error) {
+        NSLog(@"¡Error al guardar! %@", error);
+    }];
 }
 
 @end

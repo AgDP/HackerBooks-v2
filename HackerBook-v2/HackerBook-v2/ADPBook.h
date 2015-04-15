@@ -1,5 +1,14 @@
 #import "_ADPBook.h"
 
 @interface ADPBook : _ADPBook {}
-// Custom logic goes here.
+
+
+//Designated
++(instancetype)  initWithTitulo: (NSString *)titulo
+                     isFavorite: (BOOL) isFavorite
+                         author: (NSString *) authors
+                        context: (NSManagedObjectContext * ) context;
+
+-(NSString *) authorsWithNameAndSeparate;
+
 @end
