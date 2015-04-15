@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB3917901ADD84D50073C2A9 /* _ADPAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3917751ADD84D50073C2A9 /* _ADPAnnotation.m */; };
+		FB3917911ADD84D50073C2A9 /* _ADPAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3917771ADD84D50073C2A9 /* _ADPAuthor.m */; };
+		FB3917921ADD84D50073C2A9 /* _ADPBook.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3917791ADD84D50073C2A9 /* _ADPBook.m */; };
+		FB3917931ADD84D50073C2A9 /* _ADPLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = FB39177B1ADD84D50073C2A9 /* _ADPLocalization.m */; };
+		FB3917941ADD84D50073C2A9 /* _ADPPdf.m in Sources */ = {isa = PBXBuildFile; fileRef = FB39177D1ADD84D50073C2A9 /* _ADPPdf.m */; };
+		FB3917951ADD84D50073C2A9 /* _ADPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = FB39177F1ADD84D50073C2A9 /* _ADPPhoto.m */; };
+		FB3917961ADD84D50073C2A9 /* _ADPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3917811ADD84D50073C2A9 /* _ADPTag.m */; };
+		FB3917971ADD84D50073C2A9 /* ADPAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3917831ADD84D50073C2A9 /* ADPAnnotation.m */; };
+		FB3917981ADD84D50073C2A9 /* ADPAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3917851ADD84D50073C2A9 /* ADPAuthor.m */; };
+		FB3917991ADD84D50073C2A9 /* ADPBook.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3917871ADD84D50073C2A9 /* ADPBook.m */; };
+		FB39179A1ADD84D50073C2A9 /* ADPLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3917891ADD84D50073C2A9 /* ADPLocalization.m */; };
+		FB39179B1ADD84D50073C2A9 /* ADPPdf.m in Sources */ = {isa = PBXBuildFile; fileRef = FB39178B1ADD84D50073C2A9 /* ADPPdf.m */; };
+		FB39179C1ADD84D50073C2A9 /* ADPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = FB39178D1ADD84D50073C2A9 /* ADPPhoto.m */; };
+		FB39179D1ADD84D50073C2A9 /* ADPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FB39178F1ADD84D50073C2A9 /* ADPTag.m */; };
+		FBBFD7CA1ADE5F2000A204A4 /* ADPLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7C91ADE5F2000A204A4 /* ADPLibraryViewController.m */; };
+		FBBFD7D71ADE623C00A204A4 /* UIViewController+Navigation.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7D61ADE623C00A204A4 /* UIViewController+Navigation.m */; };
+		FBBFD7DC1ADE658700A204A4 /* ADPBooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7DA1ADE658700A204A4 /* ADPBooksViewController.m */; };
+		FBBFD7DD1ADE658700A204A4 /* ADPBooksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBBFD7DB1ADE658700A204A4 /* ADPBooksViewController.xib */; };
 		FBCC28B11ADBBF8E002C36BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCC28B01ADBBF8E002C36BF /* main.m */; };
 		FBCC28B41ADBBF8E002C36BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCC28B31ADBBF8E002C36BF /* AppDelegate.m */; };
 		FBCC28B61ADBBF8E002C36BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBCC28B51ADBBF8E002C36BF /* Images.xcassets */; };
@@ -28,6 +46,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB3917741ADD84D50073C2A9 /* _ADPAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ADPAnnotation.h; sourceTree = "<group>"; };
+		FB3917751ADD84D50073C2A9 /* _ADPAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ADPAnnotation.m; sourceTree = "<group>"; };
+		FB3917761ADD84D50073C2A9 /* _ADPAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ADPAuthor.h; sourceTree = "<group>"; };
+		FB3917771ADD84D50073C2A9 /* _ADPAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ADPAuthor.m; sourceTree = "<group>"; };
+		FB3917781ADD84D50073C2A9 /* _ADPBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ADPBook.h; sourceTree = "<group>"; };
+		FB3917791ADD84D50073C2A9 /* _ADPBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ADPBook.m; sourceTree = "<group>"; };
+		FB39177A1ADD84D50073C2A9 /* _ADPLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ADPLocalization.h; sourceTree = "<group>"; };
+		FB39177B1ADD84D50073C2A9 /* _ADPLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ADPLocalization.m; sourceTree = "<group>"; };
+		FB39177C1ADD84D50073C2A9 /* _ADPPdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ADPPdf.h; sourceTree = "<group>"; };
+		FB39177D1ADD84D50073C2A9 /* _ADPPdf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ADPPdf.m; sourceTree = "<group>"; };
+		FB39177E1ADD84D50073C2A9 /* _ADPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ADPPhoto.h; sourceTree = "<group>"; };
+		FB39177F1ADD84D50073C2A9 /* _ADPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ADPPhoto.m; sourceTree = "<group>"; };
+		FB3917801ADD84D50073C2A9 /* _ADPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ADPTag.h; sourceTree = "<group>"; };
+		FB3917811ADD84D50073C2A9 /* _ADPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ADPTag.m; sourceTree = "<group>"; };
+		FB3917821ADD84D50073C2A9 /* ADPAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPAnnotation.h; sourceTree = "<group>"; };
+		FB3917831ADD84D50073C2A9 /* ADPAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPAnnotation.m; sourceTree = "<group>"; };
+		FB3917841ADD84D50073C2A9 /* ADPAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPAuthor.h; sourceTree = "<group>"; };
+		FB3917851ADD84D50073C2A9 /* ADPAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPAuthor.m; sourceTree = "<group>"; };
+		FB3917861ADD84D50073C2A9 /* ADPBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPBook.h; sourceTree = "<group>"; };
+		FB3917871ADD84D50073C2A9 /* ADPBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPBook.m; sourceTree = "<group>"; };
+		FB3917881ADD84D50073C2A9 /* ADPLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPLocalization.h; sourceTree = "<group>"; };
+		FB3917891ADD84D50073C2A9 /* ADPLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPLocalization.m; sourceTree = "<group>"; };
+		FB39178A1ADD84D50073C2A9 /* ADPPdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPPdf.h; sourceTree = "<group>"; };
+		FB39178B1ADD84D50073C2A9 /* ADPPdf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPPdf.m; sourceTree = "<group>"; };
+		FB39178C1ADD84D50073C2A9 /* ADPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPPhoto.h; sourceTree = "<group>"; };
+		FB39178D1ADD84D50073C2A9 /* ADPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPPhoto.m; sourceTree = "<group>"; };
+		FB39178E1ADD84D50073C2A9 /* ADPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPTag.h; sourceTree = "<group>"; };
+		FB39178F1ADD84D50073C2A9 /* ADPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPTag.m; sourceTree = "<group>"; };
+		FBBFD7C81ADE5F2000A204A4 /* ADPLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPLibraryViewController.h; sourceTree = "<group>"; };
+		FBBFD7C91ADE5F2000A204A4 /* ADPLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPLibraryViewController.m; sourceTree = "<group>"; };
+		FBBFD7D51ADE623C00A204A4 /* UIViewController+Navigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Navigation.h"; sourceTree = "<group>"; };
+		FBBFD7D61ADE623C00A204A4 /* UIViewController+Navigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Navigation.m"; sourceTree = "<group>"; };
+		FBBFD7D81ADE646800A204A4 /* Cons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cons.h; sourceTree = "<group>"; };
+		FBBFD7D91ADE658700A204A4 /* ADPBooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPBooksViewController.h; sourceTree = "<group>"; };
+		FBBFD7DA1ADE658700A204A4 /* ADPBooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPBooksViewController.m; sourceTree = "<group>"; };
+		FBBFD7DB1ADE658700A204A4 /* ADPBooksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADPBooksViewController.xib; sourceTree = "<group>"; };
 		FBCC28AB1ADBBF8E002C36BF /* HackerBook-v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackerBook-v2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCC28AF1ADBBF8E002C36BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBCC28B01ADBBF8E002C36BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,6 +117,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB3917731ADD6ABA0073C2A9 /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				FB3917741ADD84D50073C2A9 /* _ADPAnnotation.h */,
+				FB3917751ADD84D50073C2A9 /* _ADPAnnotation.m */,
+				FB3917761ADD84D50073C2A9 /* _ADPAuthor.h */,
+				FB3917771ADD84D50073C2A9 /* _ADPAuthor.m */,
+				FB3917781ADD84D50073C2A9 /* _ADPBook.h */,
+				FB3917791ADD84D50073C2A9 /* _ADPBook.m */,
+				FB39177A1ADD84D50073C2A9 /* _ADPLocalization.h */,
+				FB39177B1ADD84D50073C2A9 /* _ADPLocalization.m */,
+				FB39177C1ADD84D50073C2A9 /* _ADPPdf.h */,
+				FB39177D1ADD84D50073C2A9 /* _ADPPdf.m */,
+				FB39177E1ADD84D50073C2A9 /* _ADPPhoto.h */,
+				FB39177F1ADD84D50073C2A9 /* _ADPPhoto.m */,
+				FB3917801ADD84D50073C2A9 /* _ADPTag.h */,
+				FB3917811ADD84D50073C2A9 /* _ADPTag.m */,
+			);
+			name = Machine;
+			sourceTree = "<group>";
+		};
+		FBBFD7CE1ADE60CA00A204A4 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FBBFD7D51ADE623C00A204A4 /* UIViewController+Navigation.h */,
+				FBBFD7D61ADE623C00A204A4 /* UIViewController+Navigation.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		FBCC28A21ADBBF8E002C36BF = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +168,7 @@
 		FBCC28AD1ADBBF8E002C36BF /* HackerBook-v2 */ = {
 			isa = PBXGroup;
 			children = (
+				FBBFD7CE1ADE60CA00A204A4 /* Category */,
 				FBCC28CF1ADBF710002C36BF /* Controllers */,
 				FBCC28CE1ADBF705002C36BF /* Models */,
 				FBCC28B21ADBBF8E002C36BF /* AppDelegate.h */,
@@ -92,6 +177,7 @@
 				FBCC28B71ADBBF8E002C36BF /* LaunchScreen.xib */,
 				FBCC28AE1ADBBF8E002C36BF /* Supporting Files */,
 				FBCC28D61ADC2B74002C36BF /* Model.xcdatamodeld */,
+				FBBFD7D81ADE646800A204A4 /* Cons.h */,
 			);
 			path = "HackerBook-v2";
 			sourceTree = "<group>";
@@ -125,6 +211,21 @@
 		FBCC28CE1ADBF705002C36BF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FB3917821ADD84D50073C2A9 /* ADPAnnotation.h */,
+				FB3917831ADD84D50073C2A9 /* ADPAnnotation.m */,
+				FB3917841ADD84D50073C2A9 /* ADPAuthor.h */,
+				FB3917851ADD84D50073C2A9 /* ADPAuthor.m */,
+				FB3917861ADD84D50073C2A9 /* ADPBook.h */,
+				FB3917871ADD84D50073C2A9 /* ADPBook.m */,
+				FB3917881ADD84D50073C2A9 /* ADPLocalization.h */,
+				FB3917891ADD84D50073C2A9 /* ADPLocalization.m */,
+				FB39178A1ADD84D50073C2A9 /* ADPPdf.h */,
+				FB39178B1ADD84D50073C2A9 /* ADPPdf.m */,
+				FB39178C1ADD84D50073C2A9 /* ADPPhoto.h */,
+				FB39178D1ADD84D50073C2A9 /* ADPPhoto.m */,
+				FB39178E1ADD84D50073C2A9 /* ADPTag.h */,
+				FB39178F1ADD84D50073C2A9 /* ADPTag.m */,
+				FB3917731ADD6ABA0073C2A9 /* Machine */,
 				FBCC28D31ADC29F5002C36BF /* AGTCoreDataStack.h */,
 				FBCC28D41ADC29F5002C36BF /* AGTCoreDataStack.m */,
 			);
@@ -136,6 +237,11 @@
 			children = (
 				FBCC28D01ADC29D1002C36BF /* AGTCoreDataTableViewController.h */,
 				FBCC28D11ADC29D1002C36BF /* AGTCoreDataTableViewController.m */,
+				FBBFD7C81ADE5F2000A204A4 /* ADPLibraryViewController.h */,
+				FBBFD7C91ADE5F2000A204A4 /* ADPLibraryViewController.m */,
+				FBBFD7D91ADE658700A204A4 /* ADPBooksViewController.h */,
+				FBBFD7DA1ADE658700A204A4 /* ADPBooksViewController.m */,
+				FBBFD7DB1ADE658700A204A4 /* ADPBooksViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -221,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBCC28B91ADBBF8E002C36BF /* LaunchScreen.xib in Resources */,
+				FBBFD7DD1ADE658700A204A4 /* ADPBooksViewController.xib in Resources */,
 				FBCC28B61ADBBF8E002C36BF /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,10 +346,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB39179C1ADD84D50073C2A9 /* ADPPhoto.m in Sources */,
+				FB3917931ADD84D50073C2A9 /* _ADPLocalization.m in Sources */,
+				FBBFD7D71ADE623C00A204A4 /* UIViewController+Navigation.m in Sources */,
+				FB3917901ADD84D50073C2A9 /* _ADPAnnotation.m in Sources */,
 				FBCC28B41ADBBF8E002C36BF /* AppDelegate.m in Sources */,
 				FBCC28B11ADBBF8E002C36BF /* main.m in Sources */,
+				FBBFD7CA1ADE5F2000A204A4 /* ADPLibraryViewController.m in Sources */,
+				FBBFD7DC1ADE658700A204A4 /* ADPBooksViewController.m in Sources */,
+				FB39179D1ADD84D50073C2A9 /* ADPTag.m in Sources */,
+				FB3917961ADD84D50073C2A9 /* _ADPTag.m in Sources */,
+				FB3917941ADD84D50073C2A9 /* _ADPPdf.m in Sources */,
+				FB3917971ADD84D50073C2A9 /* ADPAnnotation.m in Sources */,
+				FB3917991ADD84D50073C2A9 /* ADPBook.m in Sources */,
+				FB3917911ADD84D50073C2A9 /* _ADPAuthor.m in Sources */,
+				FB3917921ADD84D50073C2A9 /* _ADPBook.m in Sources */,
+				FB39179A1ADD84D50073C2A9 /* ADPLocalization.m in Sources */,
+				FB39179B1ADD84D50073C2A9 /* ADPPdf.m in Sources */,
 				FBCC28D81ADC2B74002C36BF /* Model.xcdatamodeld in Sources */,
+				FB3917981ADD84D50073C2A9 /* ADPAuthor.m in Sources */,
 				FBCC28D51ADC29F5002C36BF /* AGTCoreDataStack.m in Sources */,
+				FB3917951ADD84D50073C2A9 /* _ADPPhoto.m in Sources */,
 				FBCC28D21ADC29D1002C36BF /* AGTCoreDataTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +556,7 @@
 				FBCC28CA1ADBBF8F002C36BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FBCC28CB1ADBBF8F002C36BF /* Build configuration list for PBXNativeTarget "HackerBook-v2Tests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +565,7 @@
 				FBCC28CD1ADBBF8F002C36BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

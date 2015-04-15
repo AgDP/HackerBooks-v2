@@ -7,9 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "AGTCoreDataStack.h"
+#import "ADPBook.h"
+#import "ADPLibraryViewController.h"
+#import "UIViewController+Navigation.h"
+#import "ADPBooksViewController.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic, strong) AGTCoreDataStack *stack;
 @end
 
 @implementation AppDelegate
@@ -19,10 +24,40 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     
-    // Override point for customization after application launch.
+    //Creamos una instancia del stack
+    self.stack = [AGTCoreDataStack coreDataStackWithModelName:@"Model"];
+    
+    //Creamos datos chorras
+    
+    //Un fetchRequest
+    NSFetchRequest *fetchReq = [NSFetchRequest fetchRequestWithEntityName:[ADPBook entityName]];
+    fetchReq.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:ADPBookAttributes.title ascending:YES selector:@selector(caseInsensitiveCompare:)]];
+    fetchReq.fetchBatchSize = 20;
+    
+    //FetchRequestController
+    NSFetchedResultsController *fc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchReq managedObjectContext:self.stack.context sectionNameKeyPath:nil cacheName:nil];
+    
+    //Creamos los controladores
+    ADPLibraryViewController *libraryVC = [[ADPLibraryViewController alloc] initWithFetchedResultsController:fc style:UITableViewStylePlain];
+    ADPBooksViewController *booksVC = [[ADPBooksViewController alloc] init];
+    
+    
+    //Creo el Combinador
+    UISplitViewController *split = [[UISplitViewController alloc] init];
+    
+    [split setViewControllers:@[[libraryVC wrappedInNavigation],[booksVC wrappedInNavigation]]];
+    
+    //Asignamos delegados
+#warning Crear
+    
+    
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    self.window.rootViewController = split;
+    
     [self.window makeKeyAndVisible];
     
+    //Debemos de guardar los datos
     
     return YES;
 }
