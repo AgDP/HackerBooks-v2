@@ -8,6 +8,7 @@
                      isFavorite: (BOOL) isFavorite
                          author: (NSString *) authors
                            tags: (NSString *) tags
+                       urlPhoto: (NSString *) urlPhoto
                         context: (NSManagedObjectContext * ) context;
 
 -(NSString *) authorsWithNameAndSeparate;

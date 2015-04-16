@@ -36,10 +36,10 @@
                     </items>
                 </toolbar>
                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQw-Fk-AYE">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="243"/>
+                    <rect key="frame" x="0.0" y="72" width="173" height="171"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vSe-hR-8wi">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="243"/>
+                            <rect key="frame" x="0.0" y="0.0" width="173" height="171"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -130,19 +130,19 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="MQw-Fk-AYE" secondAttribute="trailing" id="1Up-ma-cPZ"/>
-                <constraint firstItem="MQw-Fk-AYE" firstAttribute="trailing" secondItem="6PR-r9-PGc" secondAttribute="trailing" id="Cst-VG-NBx"/>
+                <constraint firstAttribute="trailing" secondItem="MQw-Fk-AYE" secondAttribute="trailing" constant="427" id="1Up-ma-cPZ"/>
+                <constraint firstItem="MQw-Fk-AYE" firstAttribute="trailing" secondItem="6PR-r9-PGc" secondAttribute="trailing" constant="-427" id="Cst-VG-NBx"/>
                 <constraint firstItem="6PR-r9-PGc" firstAttribute="leading" secondItem="fx9-Kb-8nZ" secondAttribute="leading" id="Hiq-4g-6LJ"/>
                 <constraint firstItem="SNL-Lr-7Pv" firstAttribute="trailing" secondItem="6PR-r9-PGc" secondAttribute="trailing" id="TsF-9u-8Uh"/>
                 <constraint firstItem="SNL-Lr-7Pv" firstAttribute="top" secondItem="6PR-r9-PGc" secondAttribute="bottom" constant="61" id="X6R-6T-rTR"/>
                 <constraint firstItem="6PR-r9-PGc" firstAttribute="top" secondItem="fx9-Kb-8nZ" secondAttribute="top" constant="251" id="XDW-0T-4aJ"/>
                 <constraint firstItem="6PR-r9-PGc" firstAttribute="leading" secondItem="SNL-Lr-7Pv" secondAttribute="leading" id="atg-aN-77z"/>
-                <constraint firstItem="MQw-Fk-AYE" firstAttribute="top" secondItem="fx9-Kb-8nZ" secondAttribute="top" id="g4H-FZ-QWC"/>
+                <constraint firstItem="MQw-Fk-AYE" firstAttribute="top" secondItem="fx9-Kb-8nZ" secondAttribute="top" constant="72" id="g4H-FZ-QWC"/>
                 <constraint firstAttribute="bottom" secondItem="SNL-Lr-7Pv" secondAttribute="bottom" id="nge-xB-ldT"/>
                 <constraint firstItem="6PR-r9-PGc" firstAttribute="leading" secondItem="MQw-Fk-AYE" secondAttribute="leading" id="sZQ-ct-W69"/>
                 <constraint firstItem="6PR-r9-PGc" firstAttribute="top" secondItem="MQw-Fk-AYE" secondAttribute="bottom" constant="8" symbolic="YES" id="tE5-jt-Z8D"/>
             </constraints>
-            <point key="canvasLocation" x="238" y="157"/>
+            <point key="canvasLocation" x="238" y="193"/>
         </view>
     </objects>
 </document>

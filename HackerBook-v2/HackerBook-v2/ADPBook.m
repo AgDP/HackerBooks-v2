@@ -15,6 +15,7 @@
                      isFavorite: (BOOL) isFavorite
                          author: (NSString *) authors
                            tags: (NSString *) tags
+                       urlPhoto: (NSString *) urlPhoto
                         context: (NSManagedObjectContext * ) context{
     
     ADPBook *book = [self insertInManagedObjectContext:context];
@@ -25,19 +26,21 @@
 
     [ADPTag addTagWithNames:tags context:context book:book];
     
-    
+    [ADPPhoto addPhotoWithName: titulo andURL: urlPhoto context:context book:book];
     
 #warning Provisional
-    ADPPhoto *photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
+   /* ADPPhoto *photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
                                                     inManagedObjectContext:context];
     photo.photoData = [NSData new];
     photo.photoUrl = @"";
     
+    book.photo = photo;
+    */
     ADPPdf *pdf = [NSEntityDescription insertNewObjectForEntityForName:@"PDF"
                                                 inManagedObjectContext:context];
     pdf.pdfData = [NSData new];
     
-    book.photo = photo;
+    
     book.pdf = pdf;
     
     NSLog(@"Book: %@", book);

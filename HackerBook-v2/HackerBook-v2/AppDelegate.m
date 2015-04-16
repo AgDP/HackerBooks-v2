@@ -198,7 +198,12 @@
     {
         NSDictionary *value = key;
         
-        ADPBook *book = [ADPBook initWithTitulo:[value objectForKey:@"title"] isFavorite:NO author:[value objectForKey:@"authors"] tags:[value objectForKey:@"tags"] context:self.stack.context];
+        ADPBook *book = [ADPBook initWithTitulo:[value objectForKey:@"title"]
+                                     isFavorite:NO
+                                         author:[value objectForKey:@"authors"]
+                                           tags:[value objectForKey:@"tags"]
+                                       urlPhoto:[value objectForKey:@"image_url"]
+                                        context:self.stack.context];
         
         // Guardar
         [self.stack saveWithErrorBlock:^(NSError *error) {

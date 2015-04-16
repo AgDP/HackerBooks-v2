@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HackerBook-v2/AppDelegate.m"
-            timestampString = "450912863.994938"
+            timestampString = "450916704.837175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "-cargarDatosEnModelo:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HackerBook-v2/ADPBook.m"
-            timestampString = "450894379.654683"
+            timestampString = "450916732.717865"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "+initWithTitulo:isFavorite:author:tags:context:"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "+initWithTitulo:isFavorite:author:tags:urlPhoto:context:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -160,6 +160,22 @@
             startingLineNumber = "77"
             endingLineNumber = "77"
             landmarkName = "-libraryTableViewController:didSelectedBook:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HackerBook-v2/ADPPhoto.m"
+            timestampString = "450916796.469428"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "+addPhotoWithName:andURL:context:book:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
