@@ -1,5 +1,8 @@
 #import "ADPBook.h"
 #import "ADPAuthor.h"
+#import "ADPTag.h"
+#import "ADPPhoto.h"
+#import "ADPPdf.h"
 
 @interface ADPBook ()
 
@@ -11,24 +14,31 @@
 +(instancetype)  initWithTitulo: (NSString *)titulo
                      isFavorite: (BOOL) isFavorite
                          author: (NSString *) authors
+                           tags: (NSString *) tags
                         context: (NSManagedObjectContext * ) context{
     
     ADPBook *book = [self insertInManagedObjectContext:context];
     book.title = titulo;
     [book setIsFavoriteValue:isFavorite];
     
+    [ADPAuthor addAuthorWithNames:authors context:context book:book];
 
-    NSMutableSet *bookSet = [[NSMutableSet alloc] init];
+    [ADPTag addTagWithNames:tags context:context book:book];
     
-    NSArray *bookAuthors = [authors componentsSeparatedByString:@","];
     
-    for (NSString *name in bookAuthors) {
-        ADPAuthor *author = [NSEntityDescription insertNewObjectForEntityForName:@"Author"
-                                                          inManagedObjectContext:context];
-        author.name = name;
-        [bookSet addObject:author];
-        book.authors = bookSet;
-    }
+    
+#warning Provisional
+    ADPPhoto *photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
+                                                    inManagedObjectContext:context];
+    photo.photoData = [NSData new];
+    photo.photoUrl = @"";
+    
+    ADPPdf *pdf = [NSEntityDescription insertNewObjectForEntityForName:@"PDF"
+                                                inManagedObjectContext:context];
+    pdf.pdfData = [NSData new];
+    
+    book.photo = photo;
+    book.pdf = pdf;
     
     NSLog(@"Book: %@", book);
     

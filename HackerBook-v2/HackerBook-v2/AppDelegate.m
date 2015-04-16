@@ -28,8 +28,36 @@
     self.stack = [AGTCoreDataStack coreDataStackWithModelName:@"Model"];
     
     //Descargamos los datos y Creamos el modelo
-#warning Poner primera vez
-    [self didRecieveData];
+    
+    //Valor por defecto para saber si es la primera vez
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    
+    if (![def objectForKey:@"firstTime"]) {
+        
+        //Descargo JSON
+        [self didRecieveData];
+        
+        
+        //Guardamos un valor por defecto
+        [def setObject:@"1" forKey:@"firstTime"];
+        
+        //Por si acaso...
+        [def synchronize];
+    }else{
+        
+        //Compruebo si existe el fichero. si no existe lo descargo
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        NSString  *jsonFile = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/HackerBook/Data/JSON.txt"];
+        
+        if (![fileManager fileExistsAtPath:jsonFile]){
+            
+            [self didRecieveData];
+            
+        }
+    }
+    
+    
     
     
     //Un fetchRequest
@@ -169,14 +197,15 @@
     {
         NSDictionary *value = key;
         
-        ADPBook *book = [ADPBook initWithTitulo:[value objectForKey:@"title"] isFavorite:NO author:[value objectForKey:@"authors"] context:self.stack.context];
+        ADPBook *book = [ADPBook initWithTitulo:[value objectForKey:@"title"] isFavorite:NO author:[value objectForKey:@"authors"] tags:[value objectForKey:@"tags"] context:self.stack.context];
         
+        // Guardar
+        [self.stack saveWithErrorBlock:^(NSError *error) {
+            NSLog(@"¡Error al guardar! %@", error);
+        }];
     }
     
-    // Guardar
-    [self.stack saveWithErrorBlock:^(NSError *error) {
-        NSLog(@"¡Error al guardar! %@", error);
-    }];
+    
 }
 
 @end

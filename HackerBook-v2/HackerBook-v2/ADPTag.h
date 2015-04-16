@@ -1,5 +1,8 @@
 #import "_ADPTag.h"
 
 @interface ADPTag : _ADPTag {}
-// Custom logic goes here.
+
+
++(void) addTagWithNames: (NSString *) tags context: (NSManagedObjectContext *) context book: (ADPBook *) book;
+
 @end
