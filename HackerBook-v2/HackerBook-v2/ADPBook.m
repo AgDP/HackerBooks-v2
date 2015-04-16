@@ -59,4 +59,19 @@
     return authorsString;
 }
 
+-(NSString *) tagsWithNameAndSeparate{
+    
+    NSSet *tags = self.tags;
+    NSMutableString *tagsString = [[NSMutableString alloc] init];
+    
+    for (ADPTag *tag in tags) {
+        [tagsString appendString:tag.name];
+        [tagsString appendString:@", "];
+    }
+#warning Cambiar para que no salga la coma siempre detras del último
+    
+    return tagsString;
+    
+}
+
 @end

@@ -21,6 +21,9 @@
 		FB39179B1ADD84D50073C2A9 /* ADPPdf.m in Sources */ = {isa = PBXBuildFile; fileRef = FB39178B1ADD84D50073C2A9 /* ADPPdf.m */; };
 		FB39179C1ADD84D50073C2A9 /* ADPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = FB39178D1ADD84D50073C2A9 /* ADPPhoto.m */; };
 		FB39179D1ADD84D50073C2A9 /* ADPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FB39178F1ADD84D50073C2A9 /* ADPTag.m */; };
+		FB55CD651AE06840007B8A1D /* yodaReading.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FB55CD621AE06840007B8A1D /* yodaReading.jpg */; };
+		FB55CD661AE06840007B8A1D /* starYe.png in Resources */ = {isa = PBXBuildFile; fileRef = FB55CD631AE06840007B8A1D /* starYe.png */; };
+		FB55CD671AE06840007B8A1D /* starBla.png in Resources */ = {isa = PBXBuildFile; fileRef = FB55CD641AE06840007B8A1D /* starBla.png */; };
 		FBBFD7CA1ADE5F2000A204A4 /* ADPLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7C91ADE5F2000A204A4 /* ADPLibraryViewController.m */; };
 		FBBFD7D71ADE623C00A204A4 /* UIViewController+Navigation.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7D61ADE623C00A204A4 /* UIViewController+Navigation.m */; };
 		FBBFD7DC1ADE658700A204A4 /* ADPBooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7DA1ADE658700A204A4 /* ADPBooksViewController.m */; };
@@ -74,6 +77,9 @@
 		FB39178D1ADD84D50073C2A9 /* ADPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPPhoto.m; sourceTree = "<group>"; };
 		FB39178E1ADD84D50073C2A9 /* ADPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPTag.h; sourceTree = "<group>"; };
 		FB39178F1ADD84D50073C2A9 /* ADPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPTag.m; sourceTree = "<group>"; };
+		FB55CD621AE06840007B8A1D /* yodaReading.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yodaReading.jpg; sourceTree = "<group>"; };
+		FB55CD631AE06840007B8A1D /* starYe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starYe.png; sourceTree = "<group>"; };
+		FB55CD641AE06840007B8A1D /* starBla.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starBla.png; sourceTree = "<group>"; };
 		FBBFD7C81ADE5F2000A204A4 /* ADPLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPLibraryViewController.h; sourceTree = "<group>"; };
 		FBBFD7C91ADE5F2000A204A4 /* ADPLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPLibraryViewController.m; sourceTree = "<group>"; };
 		FBBFD7D51ADE623C00A204A4 /* UIViewController+Navigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Navigation.h"; sourceTree = "<group>"; };
@@ -138,6 +144,16 @@
 			name = Machine;
 			sourceTree = "<group>";
 		};
+		FB55CD611AE0682D007B8A1D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FB55CD621AE06840007B8A1D /* yodaReading.jpg */,
+				FB55CD631AE06840007B8A1D /* starYe.png */,
+				FB55CD641AE06840007B8A1D /* starBla.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		FBBFD7CE1ADE60CA00A204A4 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +184,7 @@
 		FBCC28AD1ADBBF8E002C36BF /* HackerBook-v2 */ = {
 			isa = PBXGroup;
 			children = (
+				FB55CD611AE0682D007B8A1D /* Resources */,
 				FBBFD7CE1ADE60CA00A204A4 /* Category */,
 				FBCC28CF1ADBF710002C36BF /* Controllers */,
 				FBCC28CE1ADBF705002C36BF /* Models */,
@@ -327,8 +344,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBCC28B91ADBBF8E002C36BF /* LaunchScreen.xib in Resources */,
+				FB55CD651AE06840007B8A1D /* yodaReading.jpg in Resources */,
 				FBBFD7DD1ADE658700A204A4 /* ADPBooksViewController.xib in Resources */,
+				FB55CD671AE06840007B8A1D /* starBla.png in Resources */,
 				FBCC28B61ADBBF8E002C36BF /* Images.xcassets in Resources */,
+				FB55CD661AE06840007B8A1D /* starYe.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

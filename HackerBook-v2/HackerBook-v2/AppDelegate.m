@@ -80,7 +80,8 @@
     
     //Asignamos delegados
 #warning Crear
-    
+    split.delegate = booksVC;
+    libraryVC.delegate = booksVC;
     
     self.window.backgroundColor = [UIColor whiteColor];
     

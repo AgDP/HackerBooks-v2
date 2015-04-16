@@ -11,5 +11,6 @@
                         context: (NSManagedObjectContext * ) context;
 
 -(NSString *) authorsWithNameAndSeparate;
+-(NSString *) tagsWithNameAndSeparate;
 
 @end

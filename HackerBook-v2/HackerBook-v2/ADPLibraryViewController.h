@@ -7,7 +7,18 @@
 //
 
 #import "AGTCoreDataTableViewController.h"
+@class ADPBook;
+@class ADPLibraryViewController;
+
+@protocol ADPLibraryViewControllerDelegate <NSObject>
+
+@optional
+-(void) libraryTableViewController: (ADPLibraryViewController *)library didSelectedBook:(ADPBook *) book;
+
+@end
 
 @interface ADPLibraryViewController : AGTCoreDataTableViewController
+
+@property (weak, nonatomic) id<ADPLibraryViewControllerDelegate> delegate;
 
 @end

@@ -9,6 +9,8 @@
 #import "ADPLibraryViewController.h"
 #import "ADPBook.h"
 #import "ADPTag.h"
+#import "ADPPhoto.h"
+#import "ADPBooksViewController.h"
 
 @interface ADPLibraryViewController ()
 
@@ -41,10 +43,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    
-    //ADPTag *tag = [self.fetchedResultsController.fetchedObjects objectAtIndex:section];
-    //return [[tag.books allObjects]count];
-    
     //Busco los tags
     NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
     NSError *error;
@@ -70,6 +68,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+ 
     
     //Busco los tags
     NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
@@ -79,7 +78,8 @@
     ADPTag *tag = [results objectAtIndex:indexPath.section];
     
     ADPBook *book = [[tag.books allObjects] objectAtIndex:indexPath.row];
-    // Averiguar cual es el libro
+    
+     // Averiguar cual es el libro
     //ADPBook *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // Crear una celda
@@ -92,7 +92,7 @@
     }
     
     // Configurarla (sincronizar libreta -> celda)
-    //cell.imageView.image = book.image;
+    cell.imageView.image = [book.photo image];
     cell.textLabel.text = book.title;
     cell.detailTextLabel.text = book.authorsWithNameAndSeparate;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -103,5 +103,50 @@
     
 }
 
+
+#pragma mark - Delegate
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    //Obtener el book seleccionado
+    //ADPBook *book = [self.fetchedResultsController.fetchedObjects objectAtIndex:indexPath.row];
+    
+    //Busco los tags
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
+    NSError *error;
+    NSArray *results = [self.fetchedResultsController.managedObjectContext executeFetchRequest:fetch error:&error];
+    
+    ADPTag *tag = [results objectAtIndex:indexPath.section];
+    
+    ADPBook *book = [[tag.books allObjects] objectAtIndex:indexPath.row];
+    
+    //Avisar al delegado siempre y cuando entienda el mensaje
+    if ([self.delegate respondsToSelector:@selector(libraryTableViewController:didSelectedBook:)])  {
+        
+        //te lo mando
+        [self.delegate libraryTableViewController:self didSelectedBook:book];
+    }
+    /*
+    // mandamos una notificacion
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    
+    NSDictionary *dict = @{NOTIFICATION_SELECT_BOOK_LIBRARY_KEY : book};
+    
+    NSNotification *n = [NSNotification notificationWithName:NOTIFICATION_SELECT_BOOK_LIBRARY_NAME object:self userInfo:dict];
+    
+    [nc postNotification:n];
+    */
+}
+
+//Protocol
+-(void) libraryTableViewController: (ADPLibraryViewController *)library didSelectedBook: (ADPBook *)book{
+    
+    //Creamos un book
+    ADPBooksViewController *bookController = [[ADPBooksViewController alloc] initWithModel:book];
+    
+    //Hago un push
+    [self.navigationController pushViewController:bookController animated:YES];
+    
+}
 
 @end
