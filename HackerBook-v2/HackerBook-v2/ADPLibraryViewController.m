@@ -22,8 +22,10 @@
     [super viewDidLoad];
 
     self.title = @"Books";
+
+    [self initializeSearchController];
+    [self initializeTableContent];
     
-       
     //Asigno las secciones
     [self.fetchedResultsController setValue:[self.fetchedResultsController fetchedObjects] forKey:@"sections"];
     
@@ -43,9 +45,17 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
- 
+#warning Dejar como antes
     ADPTag *tag = [[self.fetchedResultsController fetchedObjects] objectAtIndex:indexPath.section];
-    ADPBook *book = [[tag.books allObjects] objectAtIndex:indexPath.row];
+    NSLog(@"ROw: %d",indexPath.section);
+    ADPBook *book = nil;
+    if (tag.books.count == 1 && indexPath.row > 0) {
+        
+        book = [[tag.books allObjects] objectAtIndex:0];
+    }else{
+        book = [[tag.books allObjects] objectAtIndex:indexPath.row];
+    }
+    
     
     // Crear una celda
     static NSString *cellID = @"notebookCell";
@@ -124,4 +134,111 @@
     [self.tableView reloadData];
 }
 */
+
+#pragma mark - Initialization methods
+
+- (void)initializeTableContent {
+    
+    //sections are defined here as a NSArray of string objects (i.e. letters representing each section)
+    self.tableSections = [[ADPTag fetchDistinctItemGroupsInManagedObjectContext:self.fetchedResultsController.managedObjectContext] mutableCopy];
+    
+    //sections and items are defined here as a NSArray of NSDictionaries whereby the key is a letter and the value is a NSArray of string opbjects of names
+    self.tableSectionsAndItems = [[ADPTag fetchItemNamesByGroupInManagedObjectContext:self.fetchedResultsController.managedObjectContext] mutableCopy];
+}
+
+- (void)initializeSearchController {
+    
+    //instantiate a search results controller for presenting the search/filter results (will be presented on top of the parent table view)
+    UITableViewController *searchResultsController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    searchResultsController.tableView.dataSource = self;
+    
+    searchResultsController.tableView.delegate = self;
+    
+    //instantiate a UISearchController - passing in the search results controller table
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:searchResultsController];
+    
+    //this view controller can be covered by theUISearchController's view (i.e. search/filter table)
+    self.definesPresentationContext = YES;
+    
+    
+    //define the frame for the UISearchController's search bar and tint
+    self.searchController.searchBar.frame = CGRectMake(self.searchController.searchBar.frame.origin.x, self.searchController.searchBar.frame.origin.y, self.searchController.searchBar.frame.size.width, 44.0);
+    
+    self.searchController.searchBar.tintColor = [UIColor whiteColor];
+    
+    //add the UISearchController's search bar to the header of this table
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    
+    
+    //this ViewController will be responsible for implementing UISearchResultsDialog protocol method(s) - so handling what happens when user types into the search bar
+    self.searchController.searchResultsUpdater = self;
+    
+    
+    //this ViewController will be responsisble for implementing UISearchBarDelegate protocol methods(s)
+    self.searchController.searchBar.delegate = self;
+}
+
+#pragma mark - UISearchResultsUpdating
+
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    
+    //get search text from user input
+    NSString *searchText = [self.searchController.searchBar text];
+    
+    //exit if there is no search text (i.e. user tapped on the search bar and did not enter text yet)
+    if(![searchText length] > 0) {
+        
+        return;
+    }
+    //handle when there is search text entered by the user
+    else {
+        
+        //based on the user's search, we will update the contents of the tableSections and tableSectionsAndItems properties
+        [self.tableSections removeAllObjects];
+        
+        [self.tableSectionsAndItems removeAllObjects];
+        
+        
+        NSString *firstSearchCharacter = [searchText substringToIndex:1];
+        
+        //handle when user taps into search bear and there is no text entered yet
+        if([searchText length] == 0) {
+            
+            self.tableSections = [[ADPTag fetchDistinctItemGroupsInManagedObjectContext:self.fetchedResultsController.managedObjectContext] mutableCopy];
+            
+            self.tableSectionsAndItems = [[ADPTag fetchItemNamesByGroupInManagedObjectContext:self.fetchedResultsController.managedObjectContext] mutableCopy];
+        }
+        //handle when user types in one or more characters in the search bar
+        else if(searchText.length > 0) {
+            
+            //the table section will always be based off of the first letter of the group
+            NSString *upperCaseFirstSearchCharacter = [firstSearchCharacter uppercaseString];
+            
+            self.tableSections = [[[NSArray alloc] initWithObjects:upperCaseFirstSearchCharacter, nil] mutableCopy];
+            
+            
+            //there will only be one section (based on the first letter of the search text) - but the property requires an array for cases when there are multiple sections
+            self.tableSectionsAndItems = [[ADPTag fetchItemNamesBeginningWith:searchText inManagedObjectContext:self.fetchedResultsController.managedObjectContext] mutableCopy];
+        }
+        
+        //now that the tableSections and tableSectionsAndItems properties are updated, reload the UISearchController's tableview
+        [self.fetchedResultsController setValue:self.tableSectionsAndItems forKey:@"sections"];
+        [self.fetchedResultsController setValue:self.tableSectionsAndItems forKey:@"fetchedObjects"];
+        [((UITableViewController *)self.searchController.searchResultsController).tableView reloadData];
+    }
+}
+
+#pragma mark - UISearchBarDelegate methods
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+    [self.tableSections removeAllObjects];
+    
+    [self.tableSectionsAndItems removeAllObjects];
+    
+    self.tableSections = [[ADPTag fetchDistinctItemGroupsInManagedObjectContext:self.fetchedResultsController.managedObjectContext] mutableCopy];
+    
+    self.tableSectionsAndItems = [[ADPTag fetchItemNamesByGroupInManagedObjectContext:self.fetchedResultsController.managedObjectContext] mutableCopy];
+}
 @end

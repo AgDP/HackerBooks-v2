@@ -17,10 +17,12 @@
 
 @end
 
-@interface ADPLibraryViewController : AGTCoreDataTableViewController
+@interface ADPLibraryViewController : AGTCoreDataTableViewController <UISearchResultsUpdating, UISearchBarDelegate>
 
 @property (weak, nonatomic) id<ADPLibraryViewControllerDelegate> delegate;
+
 @property (nonatomic, strong) UISearchController *searchController;
-@property (nonatomic, strong) NSMutableArray *searchResults;
+@property (nonatomic, strong) NSMutableArray *tableSections;
+@property (nonatomic, strong) NSMutableArray *tableSectionsAndItems;
 
 @end
