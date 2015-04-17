@@ -2,6 +2,7 @@
 // Make changes to ADPPhoto.h instead.
 
 @import CoreData;
+#import "ADPHackerBookBaseClass.h"
 
 extern const struct ADPPhotoAttributes {
 	__unsafe_unretained NSString *photoData;
@@ -19,7 +20,7 @@ extern const struct ADPPhotoRelationships {
 @interface ADPPhotoID : NSManagedObjectID {}
 @end
 
-@interface _ADPPhoto : NSManagedObject {}
+@interface _ADPPhoto : ADPHackerBookBaseClass {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

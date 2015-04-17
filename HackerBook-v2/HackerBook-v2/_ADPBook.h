@@ -2,6 +2,7 @@
 // Make changes to ADPBook.h instead.
 
 @import CoreData;
+#import "ADPHackerBookBaseClass.h"
 
 extern const struct ADPBookAttributes {
 	__unsafe_unretained NSString *isFavorite;
@@ -25,7 +26,7 @@ extern const struct ADPBookRelationships {
 @interface ADPBookID : NSManagedObjectID {}
 @end
 
-@interface _ADPBook : NSManagedObject {}
+@interface _ADPBook : ADPHackerBookBaseClass {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

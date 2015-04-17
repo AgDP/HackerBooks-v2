@@ -35,10 +35,17 @@
             tag.name = tagName;
             [tagsSet addObject:tag];
             book.tags = tagsSet;
+            
         }
         
     }
     
 }
+
+-(NSInteger) numberOfObjects{
+    
+    return [[self.books allObjects] count];
+}
+
 
 @end

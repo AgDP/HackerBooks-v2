@@ -20,5 +20,7 @@
 @interface ADPLibraryViewController : AGTCoreDataTableViewController
 
 @property (weak, nonatomic) id<ADPLibraryViewControllerDelegate> delegate;
+@property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) NSMutableArray *searchResults;
 
 @end

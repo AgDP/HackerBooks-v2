@@ -2,6 +2,7 @@
 // Make changes to ADPPdf.h instead.
 
 @import CoreData;
+#import "ADPHackerBookBaseClass.h"
 
 extern const struct ADPPdfAttributes {
 	__unsafe_unretained NSString *pdfData;
@@ -16,7 +17,7 @@ extern const struct ADPPdfRelationships {
 @interface ADPPdfID : NSManagedObjectID {}
 @end
 
-@interface _ADPPdf : NSManagedObject {}
+@interface _ADPPdf : ADPHackerBookBaseClass {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

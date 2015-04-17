@@ -10,7 +10,6 @@
 
 @implementation ADPBook
 
-
 +(instancetype)  initWithTitulo: (NSString *)titulo
                      isFavorite: (BOOL) isFavorite
                          author: (NSString *) authors
@@ -29,22 +28,13 @@
     [ADPPhoto addPhotoWithName: titulo andURL: urlPhoto context:context book:book];
     
 #warning Provisional
-   /* ADPPhoto *photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
-                                                    inManagedObjectContext:context];
-    photo.photoData = [NSData new];
-    photo.photoUrl = @"";
-    
-    book.photo = photo;
-    */
     ADPPdf *pdf = [NSEntityDescription insertNewObjectForEntityForName:@"PDF"
                                                 inManagedObjectContext:context];
     pdf.pdfData = [NSData new];
     
     
     book.pdf = pdf;
-    
-    NSLog(@"Book: %@", book);
-    
+
     return book;
 }
 
@@ -76,5 +66,24 @@
     return tagsString;
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

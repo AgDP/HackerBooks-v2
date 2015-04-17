@@ -23,6 +23,17 @@
 
     self.title = @"Books";
     
+       
+    //Asigno las secciones
+    [self.fetchedResultsController setValue:[self.fetchedResultsController fetchedObjects] forKey:@"sections"];
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,57 +41,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-#warning Esto se repite mucho ponerlo fuera
-    //Busco los tags
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-    NSError *error;
-    NSArray *results = [self.fetchedResultsController.managedObjectContext executeFetchRequest:fetch error:&error];
-    
-    return results.count;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    //Busco los tags
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-    NSError *error;
-    NSArray *results = [self.fetchedResultsController.managedObjectContext executeFetchRequest:fetch error:&error];
-    
-    ADPTag *tag = [results objectAtIndex:section];
-    
-    NSInteger count = tag.books.count;
-    
-    return count;
-
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
-    //Busco los tags
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-    NSError *error;
-    NSArray *results = [self.fetchedResultsController.managedObjectContext executeFetchRequest:fetch error:&error];
-    
-   return [[results objectAtIndex:section] name];
-}
-
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
  
-    
-    //Busco los tags
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-    NSError *error;
-    NSArray *results = [self.fetchedResultsController.managedObjectContext executeFetchRequest:fetch error:&error];
-    
-    ADPTag *tag = [results objectAtIndex:indexPath.section];
-    
+    ADPTag *tag = [[self.fetchedResultsController fetchedObjects] objectAtIndex:indexPath.section];
     ADPBook *book = [[tag.books allObjects] objectAtIndex:indexPath.row];
-    
-     // Averiguar cual es el libro
-    //ADPBook *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // Crear una celda
     static NSString *cellID = @"notebookCell";
@@ -108,16 +73,8 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //Obtener el book seleccionado
-    //ADPBook *book = [self.fetchedResultsController.fetchedObjects objectAtIndex:indexPath.row];
     
-    //Busco los tags
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-    NSError *error;
-    NSArray *results = [self.fetchedResultsController.managedObjectContext executeFetchRequest:fetch error:&error];
-    
-    ADPTag *tag = [results objectAtIndex:indexPath.section];
-    
+    ADPTag *tag = [[self.fetchedResultsController fetchedObjects] objectAtIndex:indexPath.section];
     ADPBook *book = [[tag.books allObjects] objectAtIndex:indexPath.row];
     
     //Avisar al delegado siempre y cuando entienda el mensaje
@@ -149,4 +106,22 @@
     
 }
 
+/*
+//Notificación cambio en favoritos
+-(void) notifyThatBookDidChange: (NSNotification *) notification{
+    
+ 
+    //Sacamos el personaje
+    ADPBook *book = [notification.userInfo objectForKey:@"bookFavorite"];
+    
+    //Actualizamos el modelo
+    self.model = book;
+    
+    //Sincronizamos modelo -> vista
+    [self syncModelWithView];
+ 
+    
+    [self.tableView reloadData];
+}
+*/
 @end

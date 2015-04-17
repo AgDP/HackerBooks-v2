@@ -12,6 +12,7 @@
 #import "ADPLibraryViewController.h"
 #import "UIViewController+Navigation.h"
 #import "ADPBooksViewController.h"
+#import "ADPTag.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) AGTCoreDataStack *stack;
@@ -61,8 +62,8 @@
     
     
     //Un fetchRequest
-    NSFetchRequest *fetchReq = [NSFetchRequest fetchRequestWithEntityName:[ADPBook entityName]];
-    fetchReq.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:ADPBookAttributes.title ascending:YES selector:@selector(caseInsensitiveCompare:)]];
+    NSFetchRequest *fetchReq = [NSFetchRequest fetchRequestWithEntityName:[ADPTag entityName]];
+    fetchReq.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:ADPTagAttributes.name ascending:YES selector:@selector(caseInsensitiveCompare:)]];
     fetchReq.fetchBatchSize = 20;
     
     //FetchRequestController
@@ -211,6 +212,14 @@
         }];
     }
     
+    //Añado un tag Favorites
+    ADPTag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
+                                                inManagedObjectContext:self.stack.context];
+    tag.name = @"Favorite";
+    
+    [self.stack saveWithErrorBlock:^(NSError *error) {
+        NSLog(@"¡Error al guardar! %@", error);
+    }];
     
 }
 

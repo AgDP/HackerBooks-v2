@@ -2,6 +2,7 @@
 // Make changes to ADPLocalization.h instead.
 
 @import CoreData;
+#import "ADPHackerBookBaseClass.h"
 
 extern const struct ADPLocalizationAttributes {
 	__unsafe_unretained NSString *direction;
@@ -18,7 +19,7 @@ extern const struct ADPLocalizationRelationships {
 @interface ADPLocalizationID : NSManagedObjectID {}
 @end
 
-@interface _ADPLocalization : NSManagedObject {}
+@interface _ADPLocalization : ADPHackerBookBaseClass {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

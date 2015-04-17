@@ -21,7 +21,7 @@
 @import CoreData;
 @import UIKit;
 
-@interface AGTCoreDataTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface AGTCoreDataTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UISearchResultsUpdating>
 
 
 

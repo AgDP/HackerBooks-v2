@@ -2,6 +2,7 @@
 // Make changes to ADPAuthor.h instead.
 
 @import CoreData;
+#import "ADPHackerBookBaseClass.h"
 
 extern const struct ADPAuthorAttributes {
 	__unsafe_unretained NSString *name;
@@ -16,7 +17,7 @@ extern const struct ADPAuthorRelationships {
 @interface ADPAuthorID : NSManagedObjectID {}
 @end
 
-@interface _ADPAuthor : NSManagedObject {}
+@interface _ADPAuthor : ADPHackerBookBaseClass {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

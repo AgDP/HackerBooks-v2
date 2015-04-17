@@ -10,6 +10,7 @@
 #import "ADPBook.h"
 #import "ADPLibraryViewController.h"
 #import "ADPPhoto.h"
+#import "ADPTag.h"
 
 @interface ADPBooksViewController ()
 
@@ -113,36 +114,49 @@
 }
 
 -(IBAction)markFavorite:(id)sender{
-    /*
-    // mandamos una notificacion
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     
-    //Obtengo el modelo
-    AGTBook *book = self.model;
     UIButton *button = (UIButton *)sender;
+    ADPBook *book = self.model;
     
-    if (!self.model.isFavorite) {
-        UIImage *butYe = [[UIImage imageNamed:IMAGE_STAR_YELLOW] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    if (!book.isFavoriteValue) {
+        UIImage *butYe = [[UIImage imageNamed:@"starYe.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [button setImage:butYe forState:UIControlStateNormal];
+        self.model.isFavoriteValue = YES;
     }else{
         //Añado la imagen al boton
-        UIImage *butBla = [[UIImage imageNamed:IMAGE_STAR_BLACK] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        UIImage *butBla = [[UIImage imageNamed:@"starBla.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [button setImage:butBla forState:UIControlStateNormal];
+        book.isFavoriteValue = NO;
     }
+
     
     
-    NSDictionary *dict = @{NOTIFICATION_MARK_BOOK_FAVORITE_KEY : book};
     
-    NSNotification *n = [NSNotification notificationWithName:NOTIFICATION_MARK_BOOK_FAVORITE_NAME object:self userInfo:dict];
+   [ADPTag addTagWithNames:@"Favorite" context:book.managedObjectContext book: book];
     
-    [nc postNotification:n];
+    /*
+    // Buscar
+    //Busco los tags
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
+    NSError *error;
+    [fetch setPredicate:[NSPredicate predicateWithFormat:@"name == %@", @"Favorite"]];
+    NSArray *results = [book.managedObjectContext executeFetchRequest:fetch error:&error];
     
+    ADPTag * tag = [results lastObject];
+    
+    NSLog(@"Tag: %@",results);
+    NSMutableSet *set = [[NSMutableSet alloc] init];
+    [set addObject:book];
+
+    
+    tag.books = set;
+    
+    BOOL saved = [book.managedObjectContext save:&error];
+    
+    //[book.managedObjectContext deleteObject:[results lastObject]];
+    //NSError *error;
+    //[book.managedObjectContext save:&error];
     */
-    
-    
-    
-    
-    
 }
 
 @end

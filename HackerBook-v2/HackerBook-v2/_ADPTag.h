@@ -2,6 +2,7 @@
 // Make changes to ADPTag.h instead.
 
 @import CoreData;
+#import "ADPHackerBookBaseClass.h"
 
 extern const struct ADPTagAttributes {
 	__unsafe_unretained NSString *name;
@@ -16,7 +17,7 @@ extern const struct ADPTagRelationships {
 @interface ADPTagID : NSManagedObjectID {}
 @end
 
-@interface _ADPTag : NSManagedObject {}
+@interface _ADPTag : ADPHackerBookBaseClass {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

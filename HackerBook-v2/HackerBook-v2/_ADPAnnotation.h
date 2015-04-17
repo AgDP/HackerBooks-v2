@@ -2,6 +2,7 @@
 // Make changes to ADPAnnotation.h instead.
 
 @import CoreData;
+#import "ADPHackerBookBaseClass.h"
 
 extern const struct ADPAnnotationAttributes {
 	__unsafe_unretained NSString *creationDate;
@@ -22,7 +23,7 @@ extern const struct ADPAnnotationRelationships {
 @interface ADPAnnotationID : NSManagedObjectID {}
 @end
 
-@interface _ADPAnnotation : NSManagedObject {}
+@interface _ADPAnnotation : ADPHackerBookBaseClass {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

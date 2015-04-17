@@ -2,7 +2,6 @@
 
 @interface ADPBook : _ADPBook {}
 
-
 //Designated
 +(instancetype)  initWithTitulo: (NSString *)titulo
                      isFavorite: (BOOL) isFavorite

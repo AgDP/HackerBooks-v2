@@ -36,6 +36,7 @@
 		FBCC28D21ADC29D1002C36BF /* AGTCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCC28D11ADC29D1002C36BF /* AGTCoreDataTableViewController.m */; };
 		FBCC28D51ADC29F5002C36BF /* AGTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCC28D41ADC29F5002C36BF /* AGTCoreDataStack.m */; };
 		FBCC28D81ADC2B74002C36BF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBCC28D61ADC2B74002C36BF /* Model.xcdatamodeld */; };
+		FBE83C681AE1062D00F29A4F /* ADPHackerBookBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE83C671AE1062D00F29A4F /* ADPHackerBookBaseClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,8 @@
 		FBCC28D31ADC29F5002C36BF /* AGTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTCoreDataStack.h; sourceTree = "<group>"; };
 		FBCC28D41ADC29F5002C36BF /* AGTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTCoreDataStack.m; sourceTree = "<group>"; };
 		FBCC28D71ADC2B74002C36BF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		FBE83C661AE1062D00F29A4F /* ADPHackerBookBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPHackerBookBaseClass.h; sourceTree = "<group>"; };
+		FBE83C671AE1062D00F29A4F /* ADPHackerBookBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPHackerBookBaseClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +248,8 @@
 				FB3917731ADD6ABA0073C2A9 /* Machine */,
 				FBCC28D31ADC29F5002C36BF /* AGTCoreDataStack.h */,
 				FBCC28D41ADC29F5002C36BF /* AGTCoreDataStack.m */,
+				FBE83C661AE1062D00F29A4F /* ADPHackerBookBaseClass.h */,
+				FBE83C671AE1062D00F29A4F /* ADPHackerBookBaseClass.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 				FBCC28D81ADC2B74002C36BF /* Model.xcdatamodeld in Sources */,
 				FB3917981ADD84D50073C2A9 /* ADPAuthor.m in Sources */,
 				FBCC28D51ADC29F5002C36BF /* AGTCoreDataStack.m in Sources */,
+				FBE83C681AE1062D00F29A4F /* ADPHackerBookBaseClass.m in Sources */,
 				FB3917951ADD84D50073C2A9 /* _ADPPhoto.m in Sources */,
 				FBCC28D21ADC29D1002C36BF /* AGTCoreDataTableViewController.m in Sources */,
 			);
