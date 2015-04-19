@@ -211,7 +211,7 @@
             NSLog(@"¡Error al guardar! %@", error);
         }];
     }
-    
+    /*
     //Añado un tag Favorites
     ADPTag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
                                                 inManagedObjectContext:self.stack.context];
@@ -220,7 +220,7 @@
     [self.stack saveWithErrorBlock:^(NSError *error) {
         NSLog(@"¡Error al guardar! %@", error);
     }];
-    
+    */
 }
 
 @end

@@ -134,6 +134,17 @@
     
    [ADPTag addTagWithNames:@"Favorite" context:book.managedObjectContext book: book];
     
+    //BOOL saved = [book.managedObjectContext save:&error];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*
     // Buscar
     //Busco los tags

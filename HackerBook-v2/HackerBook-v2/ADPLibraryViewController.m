@@ -45,18 +45,11 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-#warning Dejar como antes
+
     ADPTag *tag = [[self.fetchedResultsController fetchedObjects] objectAtIndex:indexPath.section];
-    NSLog(@"ROw: %d",indexPath.section);
-    ADPBook *book = nil;
-    if (tag.books.count == 1 && indexPath.row > 0) {
-        
-        book = [[tag.books allObjects] objectAtIndex:0];
-    }else{
-        book = [[tag.books allObjects] objectAtIndex:indexPath.row];
-    }
-    
-    
+
+    ADPBook *book =[[tag.books allObjects] objectAtIndex:indexPath.row];
+
     // Crear una celda
     static NSString *cellID = @"notebookCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
