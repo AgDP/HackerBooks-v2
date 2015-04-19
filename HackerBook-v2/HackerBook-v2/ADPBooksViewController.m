@@ -129,11 +129,20 @@
         book.isFavoriteValue = NO;
     }
 
+    NSMutableSet *tagsSet = [book.tags mutableCopy];
+    ADPTag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
+                                                inManagedObjectContext:book.managedObjectContext];
+    tag.name = @"Favorite";
+    [tagsSet addObject:tag];
+    book.tags = tagsSet;
+#warning Falla al guardar el objeto ****************************************
+    NSError *error;
+    BOOL saved = [book.managedObjectContext save:&error];
     
     
-    
-   [ADPTag addTagWithNames:@"Favorite" context:book.managedObjectContext book: book];
-    
+   //Este es mi método de inicialización de Tags pero falla igual si le llamo
+   //[ADPTag addTagWithNames:@"Favorite" context:book.managedObjectContext book: book];
+    //NSError *error;
     //BOOL saved = [book.managedObjectContext save:&error];
     
     
