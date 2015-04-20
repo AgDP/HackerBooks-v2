@@ -14,6 +14,7 @@
                      isFavorite: (BOOL) isFavorite
                          author: (NSString *) authors
                            tags: (NSString *) tags
+                            pdf: (NSString *) urlPDF
                        urlPhoto: (NSString *) urlPhoto
                         context: (NSManagedObjectContext * ) context{
     
@@ -31,7 +32,7 @@
     ADPPdf *pdf = [NSEntityDescription insertNewObjectForEntityForName:@"PDF"
                                                 inManagedObjectContext:context];
     pdf.pdfData = [NSData new];
-    
+    pdf.pdfUrl = urlPDF;
     
     book.pdf = pdf;
 

@@ -36,6 +36,8 @@
 		FBCC28D21ADC29D1002C36BF /* AGTCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCC28D11ADC29D1002C36BF /* AGTCoreDataTableViewController.m */; };
 		FBCC28D51ADC29F5002C36BF /* AGTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCC28D41ADC29F5002C36BF /* AGTCoreDataStack.m */; };
 		FBCC28D81ADC2B74002C36BF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBCC28D61ADC2B74002C36BF /* Model.xcdatamodeld */; };
+		FBD86D471AE4F3F4001859E2 /* ADPSimplePDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD86D451AE4F3F4001859E2 /* ADPSimplePDFViewController.m */; };
+		FBD86D481AE4F3F4001859E2 /* ADPSimplePDFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD86D461AE4F3F4001859E2 /* ADPSimplePDFViewController.xib */; };
 		FBE83C681AE1062D00F29A4F /* ADPHackerBookBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE83C671AE1062D00F29A4F /* ADPHackerBookBaseClass.m */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +106,9 @@
 		FBCC28D31ADC29F5002C36BF /* AGTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTCoreDataStack.h; sourceTree = "<group>"; };
 		FBCC28D41ADC29F5002C36BF /* AGTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTCoreDataStack.m; sourceTree = "<group>"; };
 		FBCC28D71ADC2B74002C36BF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		FBD86D441AE4F3F4001859E2 /* ADPSimplePDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPSimplePDFViewController.h; sourceTree = "<group>"; };
+		FBD86D451AE4F3F4001859E2 /* ADPSimplePDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPSimplePDFViewController.m; sourceTree = "<group>"; };
+		FBD86D461AE4F3F4001859E2 /* ADPSimplePDFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADPSimplePDFViewController.xib; sourceTree = "<group>"; };
 		FBE83C661AE1062D00F29A4F /* ADPHackerBookBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPHackerBookBaseClass.h; sourceTree = "<group>"; };
 		FBE83C671AE1062D00F29A4F /* ADPHackerBookBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPHackerBookBaseClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -264,6 +269,9 @@
 				FBBFD7D91ADE658700A204A4 /* ADPBooksViewController.h */,
 				FBBFD7DA1ADE658700A204A4 /* ADPBooksViewController.m */,
 				FBBFD7DB1ADE658700A204A4 /* ADPBooksViewController.xib */,
+				FBD86D441AE4F3F4001859E2 /* ADPSimplePDFViewController.h */,
+				FBD86D451AE4F3F4001859E2 /* ADPSimplePDFViewController.m */,
+				FBD86D461AE4F3F4001859E2 /* ADPSimplePDFViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -348,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBD86D481AE4F3F4001859E2 /* ADPSimplePDFViewController.xib in Resources */,
 				FBCC28B91ADBBF8E002C36BF /* LaunchScreen.xib in Resources */,
 				FB55CD651AE06840007B8A1D /* yodaReading.jpg in Resources */,
 				FBBFD7DD1ADE658700A204A4 /* ADPBooksViewController.xib in Resources */,
@@ -394,6 +403,7 @@
 				FBE83C681AE1062D00F29A4F /* ADPHackerBookBaseClass.m in Sources */,
 				FB3917951ADD84D50073C2A9 /* _ADPPhoto.m in Sources */,
 				FBCC28D21ADC29D1002C36BF /* AGTCoreDataTableViewController.m in Sources */,
+				FBD86D471AE4F3F4001859E2 /* ADPSimplePDFViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -203,6 +203,7 @@
                                      isFavorite:NO
                                          author:[value objectForKey:@"authors"]
                                            tags:[value objectForKey:@"tags"]
+                                            pdf:[value objectForKey:@"pdf_url"]
                                        urlPhoto:[value objectForKey:@"image_url"]
                                         context:self.stack.context];
         

@@ -11,6 +11,7 @@
 #import "ADPLibraryViewController.h"
 #import "ADPPhoto.h"
 #import "ADPTag.h"
+#import "ADPSimplePDFViewController.h"
 
 @interface ADPBooksViewController ()
 
@@ -103,14 +104,14 @@
 
 
 -(IBAction)displayPdf:(id)sender{
-    /*
+    
     // Crear un PDFVC
-    AGTSimplePDFViewController *pdfVC = [[AGTSimplePDFViewController alloc]
+    ADPSimplePDFViewController *pdfVC = [[ADPSimplePDFViewController alloc]
                                          initWithModel:self.model];
     // Hacer un push
     [self.navigationController pushViewController:pdfVC
                                          animated:YES];
-    */
+    
 }
 
 -(IBAction)markFavorite:(id)sender{

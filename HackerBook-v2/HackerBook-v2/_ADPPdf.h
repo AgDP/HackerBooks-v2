@@ -6,6 +6,7 @@
 
 extern const struct ADPPdfAttributes {
 	__unsafe_unretained NSString *pdfData;
+	__unsafe_unretained NSString *pdfUrl;
 } ADPPdfAttributes;
 
 extern const struct ADPPdfRelationships {
@@ -27,6 +28,10 @@ extern const struct ADPPdfRelationships {
 
 //- (BOOL)validatePdfData:(id*)value_ error:(NSError**)error_;
 
+@property (nonatomic, strong) NSString* pdfUrl;
+
+//- (BOOL)validatePdfUrl:(id*)value_ error:(NSError**)error_;
+
 @property (nonatomic, strong) ADPBook *book;
 
 //- (BOOL)validateBook:(id*)value_ error:(NSError**)error_;
@@ -37,6 +42,9 @@ extern const struct ADPPdfRelationships {
 
 - (NSData*)primitivePdfData;
 - (void)setPrimitivePdfData:(NSData*)value;
+
+- (NSString*)primitivePdfUrl;
+- (void)setPrimitivePdfUrl:(NSString*)value;
 
 - (ADPBook*)primitiveBook;
 - (void)setPrimitiveBook:(ADPBook*)value;

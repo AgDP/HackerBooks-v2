@@ -5,6 +5,7 @@
 
 const struct ADPPdfAttributes ADPPdfAttributes = {
 	.pdfData = @"pdfData",
+	.pdfUrl = @"pdfUrl",
 };
 
 const struct ADPPdfRelationships ADPPdfRelationships = {
@@ -41,6 +42,8 @@ const struct ADPPdfRelationships ADPPdfRelationships = {
 }
 
 @dynamic pdfData;
+
+@dynamic pdfUrl;
 
 @dynamic book;
 
