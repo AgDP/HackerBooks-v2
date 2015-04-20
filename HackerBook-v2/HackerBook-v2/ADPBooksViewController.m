@@ -12,6 +12,8 @@
 #import "ADPPhoto.h"
 #import "ADPTag.h"
 #import "ADPSimplePDFViewController.h"
+#import "ADPAnnotationsViewController.h"
+#import "ADPAnnotation.h"
 
 @interface ADPBooksViewController ()
 
@@ -110,6 +112,26 @@
                                          initWithModel:self.model];
     // Hacer un push
     [self.navigationController pushViewController:pdfVC
+                                         animated:YES];
+    
+}
+
+-(IBAction)displayAnnotation:(id)sender{
+    
+    //Un fetchRequest
+    NSFetchRequest *fetchReq = [NSFetchRequest fetchRequestWithEntityName:[ADPAnnotation entityName]];
+    fetchReq.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:ADPAnnotationAttributes.name ascending:YES selector:@selector(caseInsensitiveCompare:)]];
+    fetchReq.fetchBatchSize = 20;
+    fetchReq.predicate = [NSPredicate predicateWithFormat:@"book = %@", self.model];
+    
+    //FetchRequestController
+    NSFetchedResultsController *fc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchReq managedObjectContext:self.model.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
+    // Crear un PDFVC
+    ADPAnnotationsViewController *annVC = [[ADPAnnotationsViewController alloc]
+                                           initWithFetchedResultsController:fc style:UITableViewStylePlain book:self.model];
+    // Hacer un push
+    [self.navigationController pushViewController:annVC
                                          animated:YES];
     
 }

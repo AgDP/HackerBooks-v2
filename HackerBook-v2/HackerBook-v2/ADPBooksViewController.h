@@ -21,7 +21,7 @@
 
 -(IBAction)displayPdf:(id)sender;
 -(IBAction)markFavorite:(id)sender;
-
+-(IBAction)displayAnnotation:(id)sender;
 
 -(id) initWithModel:(ADPBook *) model;
 

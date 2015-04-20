@@ -32,7 +32,11 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="kjg-lb-3FF"/>
-                        <barButtonItem title="Annotations" id="7KR-uP-Ign"/>
+                        <barButtonItem title="Annotations" id="7KR-uP-Ign">
+                            <connections>
+                                <action selector="displayAnnotation:" destination="-1" id="wvB-Nh-8gg"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQw-Fk-AYE">

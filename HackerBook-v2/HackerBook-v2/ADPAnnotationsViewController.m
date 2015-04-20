@@ -9,6 +9,8 @@
 #import "ADPAnnotationsViewController.h"
 #import "ADPAnnotation.h"
 #import "ADPBook.h"
+#import "ADPPhoto.h"
+#import "ADPAnnotationViewController.h"
 
 @interface ADPAnnotationsViewController ()
 
@@ -62,8 +64,10 @@
     }
     
     // Configurarla (sincronizar libreta -> celda)
+    UIImage *image = [UIImage imageWithData:nb.photo.photoData];
     cell.textLabel.text = nb.name;
-    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [nb.notes count]];
+    cell.imageView.image = image;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     // Devolverla
     return cell;
@@ -92,44 +96,24 @@ forRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 */
 
-/*
-#pragma mark - Table Delegate
+
 -(void) tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    // Averiguar la libreta
-    ADPAnnotation *n = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    // Crear un contorlador de notas
-    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:[AGTNote entityName]];
-    req.sortDescriptors = @[[NSSortDescriptor
-                             sortDescriptorWithKey:ADPAnnotationAttributes.name
-                             ascending:YES
-                             selector:@selector(caseInsensitiveCompare:)],
-                            [NSSortDescriptor
-                             sortDescriptorWithKey:ADPAnnotationAttributes.modificationDate
-                             ascending:NO]];
-    req.fetchBatchSize = 20;
+    // Averiguar la nota
+    ADPAnnotation *note = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    req.predicate = [NSPredicate predicateWithFormat:@"notebook = %@", n];
+    // Crear el controlador
+    ADPAnnotationViewController *nVC = [[ADPAnnotationViewController alloc] initWithModel:note];
     
-    NSFetchedResultsController *fc = [[NSFetchedResultsController alloc]
-                                      initWithFetchRequest:req
-                                      managedObjectContext:n.managedObjectContext
-                                      sectionNameKeyPath:nil cacheName:nil];
-    
-    
-    AGTNotesViewController *nVC = [[AGTNotesViewController alloc]
-                                   initWithFetchedResultsController:fc
-                                   style:UITableViewStylePlain
-                                   notebook:n];
-    
-    // Hacer un push
+    // Hacer el push
     [self.navigationController pushViewController:nVC
                                          animated:YES];
     
+    
 }
- */
+
 
 
 #pragma mark - Utils
@@ -147,9 +131,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 #pragma mark -  Actions
 -(void) addNewAnnotation:(id) sender{
     
-    //[ADPAnnotation notebookWithName:@"New Annotation"
-     //                     context:self.fetchedResultsController.managedObjectContext];
+    [ADPAnnotation annotationWithName:@"New annotation" book:self.model context:self.fetchedResultsController.managedObjectContext];
     
+    NSError *error;
+    BOOL saved = [self.fetchedResultsController.managedObjectContext save:&error];
+
 }
 
 

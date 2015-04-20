@@ -39,6 +39,8 @@
 		FBD86D471AE4F3F4001859E2 /* ADPSimplePDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD86D451AE4F3F4001859E2 /* ADPSimplePDFViewController.m */; };
 		FBD86D481AE4F3F4001859E2 /* ADPSimplePDFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD86D461AE4F3F4001859E2 /* ADPSimplePDFViewController.xib */; };
 		FBD86D4B1AE50407001859E2 /* ADPAnnotationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD86D4A1AE50407001859E2 /* ADPAnnotationsViewController.m */; };
+		FBD86D4F1AE565D0001859E2 /* ADPAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD86D4D1AE565D0001859E2 /* ADPAnnotationViewController.m */; };
+		FBD86D501AE565D0001859E2 /* ADPAnnotationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD86D4E1AE565D0001859E2 /* ADPAnnotationViewController.xib */; };
 		FBE83C681AE1062D00F29A4F /* ADPHackerBookBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE83C671AE1062D00F29A4F /* ADPHackerBookBaseClass.m */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +114,9 @@
 		FBD86D461AE4F3F4001859E2 /* ADPSimplePDFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADPSimplePDFViewController.xib; sourceTree = "<group>"; };
 		FBD86D491AE50407001859E2 /* ADPAnnotationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPAnnotationsViewController.h; sourceTree = "<group>"; };
 		FBD86D4A1AE50407001859E2 /* ADPAnnotationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPAnnotationsViewController.m; sourceTree = "<group>"; };
+		FBD86D4C1AE565D0001859E2 /* ADPAnnotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPAnnotationViewController.h; sourceTree = "<group>"; };
+		FBD86D4D1AE565D0001859E2 /* ADPAnnotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPAnnotationViewController.m; sourceTree = "<group>"; };
+		FBD86D4E1AE565D0001859E2 /* ADPAnnotationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADPAnnotationViewController.xib; sourceTree = "<group>"; };
 		FBE83C661AE1062D00F29A4F /* ADPHackerBookBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPHackerBookBaseClass.h; sourceTree = "<group>"; };
 		FBE83C671AE1062D00F29A4F /* ADPHackerBookBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPHackerBookBaseClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -277,6 +282,9 @@
 				FBD86D461AE4F3F4001859E2 /* ADPSimplePDFViewController.xib */,
 				FBD86D491AE50407001859E2 /* ADPAnnotationsViewController.h */,
 				FBD86D4A1AE50407001859E2 /* ADPAnnotationsViewController.m */,
+				FBD86D4C1AE565D0001859E2 /* ADPAnnotationViewController.h */,
+				FBD86D4D1AE565D0001859E2 /* ADPAnnotationViewController.m */,
+				FBD86D4E1AE565D0001859E2 /* ADPAnnotationViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -368,6 +376,7 @@
 				FB55CD671AE06840007B8A1D /* starBla.png in Resources */,
 				FBCC28B61ADBBF8E002C36BF /* Images.xcassets in Resources */,
 				FB55CD661AE06840007B8A1D /* starYe.png in Resources */,
+				FBD86D501AE565D0001859E2 /* ADPAnnotationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +407,7 @@
 				FB3917941ADD84D50073C2A9 /* _ADPPdf.m in Sources */,
 				FB3917971ADD84D50073C2A9 /* ADPAnnotation.m in Sources */,
 				FB3917991ADD84D50073C2A9 /* ADPBook.m in Sources */,
+				FBD86D4F1AE565D0001859E2 /* ADPAnnotationViewController.m in Sources */,
 				FB3917911ADD84D50073C2A9 /* _ADPAuthor.m in Sources */,
 				FB3917921ADD84D50073C2A9 /* _ADPBook.m in Sources */,
 				FBD86D4B1AE50407001859E2 /* ADPAnnotationsViewController.m in Sources */,
