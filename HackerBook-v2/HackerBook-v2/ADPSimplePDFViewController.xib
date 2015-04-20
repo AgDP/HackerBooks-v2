@@ -16,8 +16,18 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t8W-Um-qN6">
-                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vc-4K-QQI">
+                    <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                    <items>
+                        <barButtonItem title="Annotations" id="mXe-qm-CxX">
+                            <connections>
+                                <action selector="displayAnnotations:" destination="-1" id="xKi-Is-oU7"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t8W-Um-qN6">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="sAw-WR-Nd6">
@@ -26,6 +36,12 @@
                 </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="3Vc-4K-QQI" firstAttribute="top" secondItem="t8W-Um-qN6" secondAttribute="bottom" id="0Ju-0v-Fyx"/>
+                <constraint firstItem="3Vc-4K-QQI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0Ju-K6-eGq"/>
+                <constraint firstAttribute="trailing" secondItem="3Vc-4K-QQI" secondAttribute="trailing" id="LOQ-3C-Z13"/>
+                <constraint firstAttribute="bottom" secondItem="3Vc-4K-QQI" secondAttribute="bottom" id="qOd-aE-joZ"/>
+            </constraints>
             <point key="canvasLocation" x="458" y="497"/>
         </view>
     </objects>

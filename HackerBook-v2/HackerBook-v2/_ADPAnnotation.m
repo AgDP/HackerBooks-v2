@@ -6,6 +6,7 @@
 const struct ADPAnnotationAttributes ADPAnnotationAttributes = {
 	.creationDate = @"creationDate",
 	.modificationDate = @"modificationDate",
+	.name = @"name",
 	.text = @"text",
 };
 
@@ -47,6 +48,8 @@ const struct ADPAnnotationRelationships ADPAnnotationRelationships = {
 @dynamic creationDate;
 
 @dynamic modificationDate;
+
+@dynamic name;
 
 @dynamic text;
 

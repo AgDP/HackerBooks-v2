@@ -9,6 +9,8 @@
 #import "ADPSimplePDFViewController.h"
 #import "ADPBook.h"
 #import "ADPPdf.h"
+#import "ADPAnnotationsViewController.h"
+#import "ADPAnnotation.h"
 
 @interface ADPSimplePDFViewController ()
 
@@ -21,7 +23,12 @@
     if (self = [super initWithNibName:nil
                                bundle:nil]) {
         _model = book;
-        self.title = book.title;
+        
+        NSMutableString *title = [[NSMutableString alloc] init];
+        [title appendString:book.title];
+        [title appendString:@" - PDF"];
+        
+        self.title = title;
     }
     
     return self;
@@ -40,32 +47,31 @@
     
     [self syncWithModel];
     
-    /*
+    
     // Alta en notificaciones de library
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self
            selector:@selector(notifyThatBookDidChange:)
-               name:AGTBOOK_DID_CHANGE_NOTIFICATION
+               name:@"AGTBOOK_DID_CHANGE_NOTIFICATION"
              object:nil];
-     */
+     
 }
 
 #pragma mark - Notificaciones
 -(void) notifyThatBookDidChange:(NSNotification *) notification{
     
-    /*
+    
     // sacamos el nuevo libro
-    ADPBook *newBook = [notification.userInfo objectForKey:BOOK_KEY];
+    ADPBook *newBook = [notification.userInfo objectForKey:@"BOOK"];
     self.model = newBook;
     [self syncWithModel];
-     */
+    
 }
 
 #pragma mark - Util
 -(void) syncWithModel{
     
-    self.title = self.model.title;
-    
+  
     NSURL *url = [NSURL URLWithString:self.model.pdf.pdfUrl ];
     
     [self.pdfView loadRequest:[NSURLRequest requestWithURL:url]];
@@ -131,6 +137,28 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(IBAction)displayAnnotations:(id)sender{
+    
+    
+    //Un fetchRequest
+    NSFetchRequest *fetchReq = [NSFetchRequest fetchRequestWithEntityName:[ADPAnnotation entityName]];
+    fetchReq.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:ADPAnnotationAttributes.name ascending:YES selector:@selector(caseInsensitiveCompare:)]];
+    fetchReq.fetchBatchSize = 20;
+    fetchReq.predicate = [NSPredicate predicateWithFormat:@"book = %@", self.model];
+    
+    //FetchRequestController
+    NSFetchedResultsController *fc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchReq managedObjectContext:self.model.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
+    // Crear un PDFVC
+    ADPAnnotationsViewController *annVC = [[ADPAnnotationsViewController alloc]
+                                         initWithFetchedResultsController:fc style:UITableViewStylePlain book:self.model];
+    // Hacer un push
+    [self.navigationController pushViewController:annVC
+                                         animated:YES];
+    
 }
 
 

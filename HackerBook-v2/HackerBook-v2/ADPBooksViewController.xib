@@ -32,7 +32,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="kjg-lb-3FF"/>
-                        <barButtonItem title="Annotation" id="7KR-uP-Ign"/>
+                        <barButtonItem title="Annotations" id="7KR-uP-Ign"/>
                     </items>
                 </toolbar>
                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQw-Fk-AYE">

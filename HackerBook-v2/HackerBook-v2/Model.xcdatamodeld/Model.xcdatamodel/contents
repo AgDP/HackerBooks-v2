@@ -3,6 +3,7 @@
     <entity name="Annotation" representedClassName="ADPAnnotation" syncable="YES">
         <attribute name="creationDate" attributeType="Date" syncable="YES"/>
         <attribute name="modificationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="annotations" inverseEntity="Book" syncable="YES"/>
         <relationship name="localization" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Localization" inverseName="annotation" inverseEntity="Localization" syncable="YES"/>
@@ -43,7 +44,7 @@
         <relationship name="books" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="tags" inverseEntity="Book" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Annotation" positionX="-288" positionY="-144" width="128" height="133"/>
+        <element name="Annotation" positionX="-288" positionY="-144" width="128" height="150"/>
         <element name="Author" positionX="-0" positionY="-271" width="128" height="73"/>
         <element name="Book" positionX="88" positionY="-81" width="128" height="150"/>
         <element name="Localization" positionX="-522" positionY="-108" width="128" height="103"/>

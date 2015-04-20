@@ -86,16 +86,16 @@
         //te lo mando
         [self.delegate libraryTableViewController:self didSelectedBook:book];
     }
-    /*
-    // mandamos una notificacion
+    
+    // mandamos una notificacion para el PDF
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     
-    NSDictionary *dict = @{NOTIFICATION_SELECT_BOOK_LIBRARY_KEY : book};
+    NSDictionary *dict = @{@"BOOK" : book};
     
-    NSNotification *n = [NSNotification notificationWithName:NOTIFICATION_SELECT_BOOK_LIBRARY_NAME object:self userInfo:dict];
+    NSNotification *n = [NSNotification notificationWithName:@"AGTBOOK_DID_CHANGE_NOTIFICATION" object:self userInfo:dict];
     
     [nc postNotification:n];
-    */
+    
 }
 
 //Protocol

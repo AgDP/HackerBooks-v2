@@ -7,6 +7,7 @@
 extern const struct ADPAnnotationAttributes {
 	__unsafe_unretained NSString *creationDate;
 	__unsafe_unretained NSString *modificationDate;
+	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *text;
 } ADPAnnotationAttributes;
 
@@ -37,6 +38,10 @@ extern const struct ADPAnnotationRelationships {
 
 //- (BOOL)validateModificationDate:(id*)value_ error:(NSError**)error_;
 
+@property (nonatomic, strong) NSString* name;
+
+//- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
+
 @property (nonatomic, strong) NSString* text;
 
 //- (BOOL)validateText:(id*)value_ error:(NSError**)error_;
@@ -62,6 +67,9 @@ extern const struct ADPAnnotationRelationships {
 
 - (NSDate*)primitiveModificationDate;
 - (void)setPrimitiveModificationDate:(NSDate*)value;
+
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
 
 - (NSString*)primitiveText;
 - (void)setPrimitiveText:(NSString*)value;
