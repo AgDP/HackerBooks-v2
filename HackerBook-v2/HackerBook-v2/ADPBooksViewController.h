@@ -19,10 +19,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *tags;
 @property (weak, nonatomic) IBOutlet UIButton *favorite;
 
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
 -(IBAction)displayPdf:(id)sender;
 -(IBAction)markFavorite:(id)sender;
 -(IBAction)displayAnnotation:(id)sender;
 
 -(id) initWithModel:(ADPBook *) model;
+-(id) initWithFetchResultController:(NSFetchedResultsController *) fetchedResultsController;
 
 @end

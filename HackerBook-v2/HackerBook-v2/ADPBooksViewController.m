@@ -30,6 +30,15 @@
     return self;
 }
 
+-(id) initWithFetchResultController:(NSFetchedResultsController *) fetchedResultsController{
+    
+    if (self = [super initWithNibName:nil bundle:nil]) {
+        _fetchedResultsController = fetchedResultsController;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -138,6 +147,11 @@
 
 -(IBAction)markFavorite:(id)sender{
     
+#warning Solucionnnnnnnnnnnn provicional
+    self.fetchedResultsController.delegate  = nil;
+    
+    NSLog(@"fetttt primero %d",[[self.fetchedResultsController fetchedObjects]count]);
+    
     UIButton *button = (UIButton *)sender;
     ADPBook *book = self.model;
     
@@ -145,61 +159,40 @@
         UIImage *butYe = [[UIImage imageNamed:@"starYe.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [button setImage:butYe forState:UIControlStateNormal];
         self.model.isFavoriteValue = YES;
+        
+#warning Crear en el modelo el añadir tag solo si no existe
+        //Añado al tag una referencia al book
+        NSMutableSet *tagsSet = [book.tags mutableCopy];
+        ADPTag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
+                                                    inManagedObjectContext:self.fetchedResultsController.managedObjectContext];
+        tag.name = @"Favorite";
+        [tagsSet addObject:tag];
+        book.tags = tagsSet;
+        
+        NSError *error;
+        [self.fetchedResultsController.managedObjectContext save:&error];
+        
+        NSError *errorPerform;
+        [self.fetchedResultsController performFetch:&errorPerform];
+        [self.fetchedResultsController setValue:[self.fetchedResultsController fetchedObjects] forKey:@"sections"];
+        
     }else{
         //Añado la imagen al boton
         UIImage *butBla = [[UIImage imageNamed:@"starBla.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [button setImage:butBla forState:UIControlStateNormal];
         book.isFavoriteValue = NO;
+        
+#warning Necesito un método en el modelo que me devuelva el tag favorite en nsset
+        [book removeTags:nil];
     }
-
-    NSMutableSet *tagsSet = [book.tags mutableCopy];
-    ADPTag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
-                                                inManagedObjectContext:book.managedObjectContext];
-    tag.name = @"Favorite";
-    [tagsSet addObject:tag];
-    book.tags = tagsSet;
-#warning Falla al guardar el objeto ****************************************
-    NSError *error;
-    BOOL saved = [book.managedObjectContext save:&error];
-    
-    
-   //Este es mi método de inicialización de Tags pero falla igual si le llamo
-   //[ADPTag addTagWithNames:@"Favorite" context:book.managedObjectContext book: book];
-    //NSError *error;
-    //BOOL saved = [book.managedObjectContext save:&error];
     
     
     
+    //[self.fetchedResultsController.delegate controllerWillChangeContent:self.fetchedResultsController];
+    NSLog(@"fetttt %d",[[self.fetchedResultsController fetchedObjects]count]);
     
-    
-    
-    
-    
-    
-    
-    /*
-    // Buscar
-    //Busco los tags
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-    NSError *error;
-    [fetch setPredicate:[NSPredicate predicateWithFormat:@"name == %@", @"Favorite"]];
-    NSArray *results = [book.managedObjectContext executeFetchRequest:fetch error:&error];
-    
-    ADPTag * tag = [results lastObject];
-    
-    NSLog(@"Tag: %@",results);
-    NSMutableSet *set = [[NSMutableSet alloc] init];
-    [set addObject:book];
-
-    
-    tag.books = set;
-    
-    BOOL saved = [book.managedObjectContext save:&error];
-    
-    //[book.managedObjectContext deleteObject:[results lastObject]];
-    //NSError *error;
-    //[book.managedObjectContext save:&error];
-    */
 }
+
+
 
 @end

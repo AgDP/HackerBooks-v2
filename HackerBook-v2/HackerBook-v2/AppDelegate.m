@@ -71,7 +71,7 @@
     
     //Creamos los controladores
     ADPLibraryViewController *libraryVC = [[ADPLibraryViewController alloc] initWithFetchedResultsController:fc style:UITableViewStylePlain];
-    ADPBooksViewController *booksVC = [[ADPBooksViewController alloc] init];
+    ADPBooksViewController *booksVC = [[ADPBooksViewController alloc] initWithFetchResultController:fc];
     
     
     //Creo el Combinador
@@ -212,16 +212,7 @@
             NSLog(@"¡Error al guardar! %@", error);
         }];
     }
-    /*
-    //Añado un tag Favorites
-    ADPTag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
-                                                inManagedObjectContext:self.stack.context];
-    tag.name = @"Favorite";
-    
-    [self.stack saveWithErrorBlock:^(NSError *error) {
-        NSLog(@"¡Error al guardar! %@", error);
-    }];
-    */
+
 }
 
 @end

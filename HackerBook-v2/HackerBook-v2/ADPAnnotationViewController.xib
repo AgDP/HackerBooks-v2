@@ -28,11 +28,13 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="JtB-pZ-8Gq"/>
-                        <barButtonItem systemItem="action" id="r3P-6d-Uln">
+                        <barButtonItem title="Compartir" id="r3P-6d-Uln">
                             <connections>
                                 <action selector="displayShare:" destination="-1" id="l6X-Fn-Mb3"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="aEe-xW-TKz"/>
+                        <barButtonItem systemItem="trash" id="euh-gJ-EFK"/>
                     </items>
                 </toolbar>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="FM6-yK-LMT">
