@@ -20,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self observeBookNotifications];
 
     self.title = @"Books";
 
@@ -109,24 +111,19 @@
     
 }
 
-/*
-//Notificación cambio en favoritos
--(void) notifyThatBookDidChange: (NSNotification *) notification{
-    
- 
-    //Sacamos el personaje
-    ADPBook *book = [notification.userInfo objectForKey:@"bookFavorite"];
-    
-    //Actualizamos el modelo
-    self.model = book;
-    
-    //Sincronizamos modelo -> vista
-    [self syncModelWithView];
- 
+#pragma mark -  Notificaciones
+-(void) observeBookNotifications{
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self
+           selector:@selector(reloadTable)
+               name:@"CHANGE_BOOKS_IN_TAGS"
+             object:nil];
+}
+
+-(void) reloadTable{
     
     [self.tableView reloadData];
 }
-*/
 
 #pragma mark - Initialization methods
 

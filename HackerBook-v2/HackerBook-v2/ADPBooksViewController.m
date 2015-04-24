@@ -160,21 +160,9 @@
         [button setImage:butYe forState:UIControlStateNormal];
         self.model.isFavoriteValue = YES;
         
-#warning Crear en el modelo el añadir tag solo si no existe
         //Añado al tag una referencia al book
-        NSMutableSet *tagsSet = [book.tags mutableCopy];
-        ADPTag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
-                                                    inManagedObjectContext:self.fetchedResultsController.managedObjectContext];
-        tag.name = @"Favorite";
-        [tagsSet addObject:tag];
-        book.tags = tagsSet;
+        [ADPTag addTagFavoriteWithBook:book andManagedObjectContext:self.fetchedResultsController.managedObjectContext];
         
-        NSError *error;
-        [self.fetchedResultsController.managedObjectContext save:&error];
-        
-        NSError *errorPerform;
-        [self.fetchedResultsController performFetch:&errorPerform];
-        [self.fetchedResultsController setValue:[self.fetchedResultsController fetchedObjects] forKey:@"sections"];
         
     }else{
         //Añado la imagen al boton
@@ -182,17 +170,33 @@
         [button setImage:butBla forState:UIControlStateNormal];
         book.isFavoriteValue = NO;
         
-#warning Necesito un método en el modelo que me devuelva el tag favorite en nsset
-        [book removeTags:nil];
+        [ADPTag removeBook:book InFavoriteWithManagedObjectContext:self.fetchedResultsController.managedObjectContext];
     }
     
     
+    NSError *error;
+    [self.fetchedResultsController.managedObjectContext save:&error];
     
+    NSError *errorPerform;
+    [self.fetchedResultsController performFetch:&errorPerform];
+    [self.fetchedResultsController setValue:[self.fetchedResultsController fetchedObjects] forKey:@"sections"];
+    
+    [self setupNotifications];
     //[self.fetchedResultsController.delegate controllerWillChangeContent:self.fetchedResultsController];
     NSLog(@"fetttt %d",[[self.fetchedResultsController fetchedObjects]count]);
     
 }
 
 
-
+#pragma mark - Notifications
+-(void) setupNotifications{
+    
+    NSNotification *n = [NSNotification
+                         notificationWithName:@"CHANGE_BOOKS_IN_TAGS"
+                         object:self
+                         userInfo:@{@"bookFavorite" : self}];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:n];
+    
+}
 @end

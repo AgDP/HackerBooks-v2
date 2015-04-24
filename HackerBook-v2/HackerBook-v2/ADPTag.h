@@ -3,8 +3,8 @@
 @interface ADPTag : _ADPTag {}
 
 +(void) addTagWithNames: (NSString *) tags context: (NSManagedObjectContext *) context book: (ADPBook *) book;
-
-
++(void) addTagFavoriteWithBook: (ADPBook *)book andManagedObjectContext: (NSManagedObjectContext *) managedObjectContext;
++(void) removeBook: (ADPBook *) book InFavoriteWithManagedObjectContext: (NSManagedObjectContext *) managedObjectContext;
 
 
 /*!

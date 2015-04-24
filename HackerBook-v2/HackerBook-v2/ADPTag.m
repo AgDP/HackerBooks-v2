@@ -9,6 +9,7 @@
 
 @implementation ADPTag
 
+
 +(void) addTagWithNames: (NSString *) tags context: (NSManagedObjectContext *) context book: (ADPBook *) book{
     
     NSMutableSet *tagsSet = [[NSMutableSet alloc] init];
@@ -42,9 +43,84 @@
     
 }
 
--(NSInteger) numberOfObjects{
+#pragma mark - Favorites
+
++(void) addTagFavoriteWithBook: (ADPBook *)book andManagedObjectContext: (NSManagedObjectContext *) managedObjectContext{
     
-    return [[self.books allObjects] count];
+    NSMutableSet *tagsSet = [book.tags mutableCopy];
+    
+    NSArray *arrayFavorites = [self existFavoritesInManagedObjectContext: managedObjectContext];
+    
+    ADPTag *tag;
+    if (arrayFavorites.count == 0) {
+        tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag"
+                                                    inManagedObjectContext:managedObjectContext];
+        tag.name = @"Favorite";
+        
+    }else{
+        tag = [arrayFavorites lastObject];
+    }
+    [tagsSet addObject:tag];
+    
+    book.tags = tagsSet;
+    
+    
+}
+
++(NSArray *) existFavoritesInManagedObjectContext: (NSManagedObjectContext *) managedObjectContext{
+    
+    // Buscar
+    NSFetchRequest *req = [NSFetchRequest
+                           fetchRequestWithEntityName:[ADPTag entityName]];
+    
+    req.sortDescriptors = @[[NSSortDescriptor
+                             sortDescriptorWithKey:ADPTagAttributes.name
+                             ascending:YES
+                             selector:@selector(caseInsensitiveCompare:)]];
+    req.fetchBatchSize = 20;
+    req.predicate = [NSPredicate predicateWithFormat:@"name = %@", @"Favorite"];
+    
+    NSError *error;
+    return [managedObjectContext executeFetchRequest:req error:&error];
+    
+    
+
+}
+
++(void) removeBook: (ADPBook *) book InFavoriteWithManagedObjectContext: (NSManagedObjectContext *) managedObjectContext{
+    
+    
+    NSSet *set = book.tags;
+    
+    for (ADPTag *tag in set) {
+        if ([tag.name isEqualToString:@"Favorite"]) {
+            [book removeTagsObject:tag];
+            [self removeTagFavoriteWithManagedObjectContext:managedObjectContext];
+            
+            
+            
+            break;
+        }
+    }
+    
+}
+
++(void) removeTagFavoriteWithManagedObjectContext: (NSManagedObjectContext *) managedObjectContext{
+    
+    //Compruebo si hay libros en el Tag Favorite
+    NSArray *arrayFavorites = [self existFavoritesInManagedObjectContext:managedObjectContext];
+    
+    if (arrayFavorites.count > 0) {
+        
+        ADPTag *tag = [arrayFavorites lastObject];
+        
+        if (tag.books.count == 0) {
+            [managedObjectContext deleteObject:tag];
+        }
+        
+    }
+    
+    
 }
 
 
@@ -53,11 +129,44 @@
 
 
 
+#pragma mark - Comparison
+- (NSComparisonResult)compare:(ADPTag *)other{
+    
+    /* favorite always comes first */
+    static NSString *fav = @"Favorite";
+    
+    if ([[self normalizedName] isEqualToString:[other normalizedName]]) {
+        return NSOrderedSame;
+    }else if ([[self normalizedName] isEqualToString:fav]){
+        return NSOrderedAscending;
+    }else if ([[other normalizedName] isEqualToString:fav]){
+        return NSOrderedDescending;
+    }else{
+        return [self.name compare:other.normalizedName];
+    }
+}
+
+-(NSString*) normalizedName{
+    return self.name;
+}
 
 
+-(NSString*) normalizeCase:(NSString*) aString{
+    
+    NSString *norm;
+    
+    if (aString.length <= 1) {
+        norm = [aString capitalizedString];
+    } else {
+        norm = [NSString stringWithFormat:@"%@%@",[[aString substringToIndex:1] uppercaseString],[[aString substringFromIndex:1]lowercaseString]];
+    }
+    return norm;
+}
 
-
-
+-(NSInteger) numberOfObjects{
+    
+    return [[self.books allObjects] count];
+}
 
 
 
