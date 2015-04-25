@@ -8,6 +8,8 @@
 
 #import "ADPAnnotationViewController.h"
 #import "ADPAnnotation.h"
+#import "ADPPhotoViewController.h"
+#import "ADPPhoto.h"
 
 @interface ADPAnnotationViewController ()
 
@@ -16,11 +18,12 @@
 @implementation ADPAnnotationViewController
 
 #pragma mark - Init
--(id) initWithModel:(ADPAnnotation *) model{
+-(id) initWithModel:(ADPAnnotation *) model andContext: (NSManagedObjectContext *) context{
     
     if (self = [super initWithNibName:nil
                                bundle:nil]) {
         _model = model;
+        _context = context;
     }
     
     return self;
@@ -53,6 +56,9 @@
     // Texto
     self.textView.text = self.model.text;
     
+    //Photo
+    self.photoView.image = self.model.photo.image;
+    
 }
 
 
@@ -68,15 +74,17 @@
     self.model.text = self.textView.text;
 }
 
+
+
 #pragma mark - Actions
 - (IBAction)displayPhoto:(id)sender {
-  /*
+  
     //Creamos el controlador
-    AGTPhotoViewController *pVc = [[AGTPhotoViewController alloc] initWithModel:self.model.photo];
+    ADPPhotoViewController *pVc = [[ADPPhotoViewController alloc]initWithModel:self.model.photo andAnnotation:self.model andContext:self.context];
     
     //Push
     [self.navigationController pushViewController:pVc animated:YES];
-   */ 
+   
 }
 
 

@@ -29,7 +29,14 @@
     [self initializeTableContent];
     
     //Asigno las secciones
-    [self.fetchedResultsController setValue:[self.fetchedResultsController fetchedObjects] forKey:@"sections"];
+    
+    NSMutableArray *tags = [[NSMutableArray alloc] init];
+    
+    tags = [[self.fetchedResultsController fetchedObjects] mutableCopy];
+    
+    [tags sortedArrayUsingSelector:@selector(compare:)];
+    
+    [self.fetchedResultsController setValue:tags forKey:@"sections"];
     
 }
 

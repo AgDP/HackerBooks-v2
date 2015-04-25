@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ADPAnnotationViewController">
             <connections>
                 <outlet property="creationDateView" destination="YqH-Nc-xOP" id="zaB-He-jKZ"/>
                 <outlet property="modificationDateView" destination="Obl-MS-OHJ" id="QWh-nu-HA2"/>
+                <outlet property="photoView" destination="FM6-yK-LMT" id="Jx6-gJ-T1q"/>
                 <outlet property="textView" destination="CWk-4H-kaf" id="OfL-U5-2L4"/>
                 <outlet property="titleAnnotation" destination="cn4-5U-6SG" id="sfO-LY-JgZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -15,14 +18,60 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="X2N-IG-suF">
-                    <rect key="frame" x="0.0" y="980" width="768" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FM6-yK-LMT">
+                    <rect key="frame" x="0.0" y="109" width="227" height="212"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="212" id="AA9-ii-LPU"/>
+                        <constraint firstAttribute="width" constant="227" id="bTp-we-xcs"/>
+                    </constraints>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n5x-SN-C4h">
+                    <rect key="frame" x="0.0" y="343" width="600" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWk-4H-kaf">
+                    <rect key="frame" x="0.0" y="381" width="600" height="175"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="175" id="0uQ-09-6gc"/>
+                    </constraints>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cn4-5U-6SG">
+                    <rect key="frame" x="235" y="109" width="357" height="95"/>
+                    <color key="backgroundColor" red="0.7738912563" green="0.76160251540000001" blue="0.74557839250000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YqH-Nc-xOP">
+                    <rect key="frame" x="235" y="261" width="170" height="60"/>
+                    <color key="backgroundColor" red="0.7738912563" green="0.76160251540000001" blue="0.74557839250000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obl-MS-OHJ">
+                    <rect key="frame" x="429" y="261" width="163" height="60"/>
+                    <color key="backgroundColor" red="0.7738912563" green="0.76160251540000001" blue="0.74557839250000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="163" id="DdT-VG-BjI"/>
+                        <constraint firstAttribute="height" constant="60" id="aAP-Ub-bE8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2N-IG-suF">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                     <items>
-                        <barButtonItem title="Item" systemItem="camera" id="jLG-c7-4gz">
+                        <barButtonItem title="Take Photo" id="jLG-c7-4gz">
                             <connections>
                                 <action selector="displayPhoto:" destination="-1" id="365-Vo-tMZ"/>
                             </connections>
@@ -37,56 +86,32 @@
                         <barButtonItem systemItem="trash" id="euh-gJ-EFK"/>
                     </items>
                 </toolbar>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="FM6-yK-LMT">
-                    <rect key="frame" x="0.0" y="109" width="343" height="384"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="n5x-SN-C4h">
-                    <rect key="frame" x="0.0" y="497" width="768" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="CWk-4H-kaf">
-                    <rect key="frame" x="0.0" y="535" width="768" height="450"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cn4-5U-6SG">
-                    <rect key="frame" x="351" y="109" width="409" height="95"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.7738912563" green="0.76160251540000001" blue="0.74557839250000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YqH-Nc-xOP">
-                    <rect key="frame" x="351" y="261" width="195" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.7738912563" green="0.76160251540000001" blue="0.74557839250000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Obl-MS-OHJ">
-                    <rect key="frame" x="565" y="261" width="195" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.7738912563" green="0.76160251540000001" blue="0.74557839250000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="YqH-Nc-xOP" firstAttribute="leading" secondItem="FM6-yK-LMT" secondAttribute="trailing" constant="8" symbolic="YES" id="0PR-dM-bcJ"/>
+                <constraint firstItem="FM6-yK-LMT" firstAttribute="top" secondItem="cn4-5U-6SG" secondAttribute="top" id="5p1-hz-nQ5"/>
+                <constraint firstItem="CWk-4H-kaf" firstAttribute="trailing" secondItem="n5x-SN-C4h" secondAttribute="trailing" id="GBl-Am-Owj"/>
+                <constraint firstItem="X2N-IG-suF" firstAttribute="top" secondItem="CWk-4H-kaf" secondAttribute="bottom" id="HOI-eA-Ijv"/>
+                <constraint firstItem="CWk-4H-kaf" firstAttribute="leading" secondItem="FM6-yK-LMT" secondAttribute="leading" id="IV6-04-np4"/>
+                <constraint firstItem="X2N-IG-suF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JSv-9L-x7X"/>
+                <constraint firstItem="cn4-5U-6SG" firstAttribute="leading" secondItem="FM6-yK-LMT" secondAttribute="trailing" constant="8" symbolic="YES" id="KAw-0X-d0v"/>
+                <constraint firstItem="FM6-yK-LMT" firstAttribute="bottom" secondItem="Obl-MS-OHJ" secondAttribute="bottom" id="N3T-q2-JEG"/>
+                <constraint firstAttribute="bottom" secondItem="X2N-IG-suF" secondAttribute="bottom" id="Nue-14-BAF"/>
+                <constraint firstItem="Obl-MS-OHJ" firstAttribute="leading" secondItem="YqH-Nc-xOP" secondAttribute="trailing" constant="24" id="Uq9-ht-s1g"/>
+                <constraint firstItem="Obl-MS-OHJ" firstAttribute="trailing" secondItem="cn4-5U-6SG" secondAttribute="trailing" id="UqY-Pm-b4P"/>
+                <constraint firstItem="Obl-MS-OHJ" firstAttribute="top" secondItem="cn4-5U-6SG" secondAttribute="bottom" constant="57" id="Whg-FE-Gbp"/>
+                <constraint firstAttribute="trailing" secondItem="X2N-IG-suF" secondAttribute="trailing" id="gem-bT-Qxg"/>
+                <constraint firstItem="Obl-MS-OHJ" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="iZO-n1-RR6"/>
+                <constraint firstItem="FM6-yK-LMT" firstAttribute="bottom" secondItem="YqH-Nc-xOP" secondAttribute="bottom" id="jyh-UH-7x3"/>
+                <constraint firstItem="CWk-4H-kaf" firstAttribute="leading" secondItem="n5x-SN-C4h" secondAttribute="leading" id="pJ9-tM-h5k"/>
+                <constraint firstItem="n5x-SN-C4h" firstAttribute="top" secondItem="FM6-yK-LMT" secondAttribute="bottom" constant="22" id="qvU-kB-MyW"/>
+                <constraint firstItem="CWk-4H-kaf" firstAttribute="top" secondItem="n5x-SN-C4h" secondAttribute="bottom" constant="8" symbolic="YES" id="t3E-KI-e8M"/>
+                <constraint firstItem="Obl-MS-OHJ" firstAttribute="firstBaseline" secondItem="YqH-Nc-xOP" secondAttribute="firstBaseline" id="tzV-rO-Mvf"/>
+                <constraint firstItem="CWk-4H-kaf" firstAttribute="trailing" secondItem="X2N-IG-suF" secondAttribute="trailing" id="uPr-S9-Aqp"/>
+                <constraint firstItem="CWk-4H-kaf" firstAttribute="leading" secondItem="X2N-IG-suF" secondAttribute="leading" id="xzq-bQ-1ls"/>
+            </constraints>
             <point key="canvasLocation" x="458" y="363"/>
         </view>
     </objects>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
-    </simulatedMetricsContainer>
 </document>

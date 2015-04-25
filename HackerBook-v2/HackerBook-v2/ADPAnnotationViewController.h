@@ -11,14 +11,15 @@
 
 @interface ADPAnnotationViewController : UIViewController
 
-
+@property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *titleAnnotation;
 @property (weak, nonatomic) IBOutlet UILabel *creationDateView;
 @property (weak, nonatomic) IBOutlet UILabel *modificationDateView;
 @property (nonatomic, strong) ADPAnnotation *model;
+@property(nonatomic, strong) NSManagedObjectContext *context;
 
--(id) initWithModel:(ADPAnnotation *) model;
+-(id) initWithModel:(ADPAnnotation *) model andContext: (NSManagedObjectContext *) context;
 
 
 

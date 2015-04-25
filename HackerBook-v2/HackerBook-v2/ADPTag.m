@@ -151,17 +151,7 @@
 }
 
 
--(NSString*) normalizeCase:(NSString*) aString{
-    
-    NSString *norm;
-    
-    if (aString.length <= 1) {
-        norm = [aString capitalizedString];
-    } else {
-        norm = [NSString stringWithFormat:@"%@%@",[[aString substringToIndex:1] uppercaseString],[[aString substringFromIndex:1]lowercaseString]];
-    }
-    return norm;
-}
+
 
 -(NSInteger) numberOfObjects{
     

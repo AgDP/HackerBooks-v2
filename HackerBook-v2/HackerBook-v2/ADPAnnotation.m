@@ -33,6 +33,10 @@
     return ann;
 }
 
+-(NSInteger) numberOfObjects{
+    
+    return [[self.book.annotations allObjects] count];
+}
 
 @end
 

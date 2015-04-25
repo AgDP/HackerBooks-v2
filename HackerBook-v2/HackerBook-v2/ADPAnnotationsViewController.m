@@ -40,6 +40,7 @@
     //self.title = book.title;
     
     [self addNewNotebookButton];
+    [self setupNotification];
     
     // Edit button
     //self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -75,26 +76,8 @@
     
 }
 
-/*
--(void) tableView:(UITableView *)tableView
-commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
-        
-        // Inmediatamente lo elimino del modelo
-        
-        // Averiguar la libreta
-        AGTNotebook *nb = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        
-        // Eliminarla
-        [self.fetchedResultsController.managedObjectContext deleteObject:nb];
-        
-    }
-    
-}
-*/
+
+
 
 
 -(void) tableView:(UITableView *)tableView
@@ -105,7 +88,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ADPAnnotation *note = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // Crear el controlador
-    ADPAnnotationViewController *nVC = [[ADPAnnotationViewController alloc] initWithModel:note];
+    ADPAnnotationViewController *nVC = [[ADPAnnotationViewController alloc] initWithModel:note andContext:self.fetchedResultsController.managedObjectContext];
     
     // Hacer el push
     [self.navigationController pushViewController:nVC
@@ -114,7 +97,52 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
 }
 
+#pragma mark - Notification
 
+-(void) setupNotification{
+    
+    // Alta en notificaciones de library
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self
+           selector:@selector(notifyThatBookDidChange:)
+               name:@"AGTBOOK_DID_CHANGE_NOTIFICATION"
+             object:nil];
+    
+}
+
+-(void) notifyThatBookDidChange:(NSNotification *) notification{
+    
+    
+    // sacamos el nuevo libro
+    ADPBook *newBook = [notification.userInfo objectForKey:@"BOOK"];
+    self.model = newBook;
+    [self syncWithModel];
+    
+}
+
+-(void) syncWithModel{
+    
+    
+    //Un fetchRequest
+    NSFetchRequest *fetchReq = [NSFetchRequest fetchRequestWithEntityName:[ADPAnnotation entityName]];
+    fetchReq.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:ADPAnnotationAttributes.name ascending:YES selector:@selector(caseInsensitiveCompare:)]];
+    fetchReq.fetchBatchSize = 20;
+    fetchReq.predicate = [NSPredicate predicateWithFormat:@"book = %@", self.model];
+    
+    //FetchRequestController
+    NSFetchedResultsController *fc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchReq managedObjectContext:self.model.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
+    self.fetchedResultsController = fc;
+
+    
+    NSMutableString *title = [[NSMutableString alloc] init];
+    [title appendString:self.model.title];
+    [title appendString:@" - Annotations"];
+    
+    self.title = title;
+    
+    [self.tableView reloadData];
+}
 
 #pragma mark - Utils
 -(void) addNewNotebookButton{

@@ -1,6 +1,7 @@
 #import "ADPPhoto.h"
 @import UIKit;
 #import "ADPBook.h"
+#import "ADPAnnotation.h"
 
 @interface ADPPhoto ()
 
@@ -41,6 +42,22 @@
     
     // Convertir la NSData en UIImage
     return [UIImage imageWithData:self.photoData];
+}
+
+-(void) saveImage: (UIImage *)image inAnnotation: (ADPAnnotation *) annotation andContext: (NSManagedObjectContext *) context{
+    
+    ADPPhoto *photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
+                                                    inManagedObjectContext:context];
+    photo.image = image;
+    photo.annotation = annotation;
+    photo.photoData = UIImageJPEGRepresentation(image, 0.9);
+    
+    NSError * error;
+    
+    BOOL save = [context save:&error];
+    
+    // Convertir la UIImage en un NSData
+    self.photoData = UIImageJPEGRepresentation(photo.image, 0.9);
 }
 
 @end

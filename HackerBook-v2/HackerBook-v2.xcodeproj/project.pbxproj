@@ -24,6 +24,8 @@
 		FB55CD651AE06840007B8A1D /* yodaReading.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FB55CD621AE06840007B8A1D /* yodaReading.jpg */; };
 		FB55CD661AE06840007B8A1D /* starYe.png in Resources */ = {isa = PBXBuildFile; fileRef = FB55CD631AE06840007B8A1D /* starYe.png */; };
 		FB55CD671AE06840007B8A1D /* starBla.png in Resources */ = {isa = PBXBuildFile; fileRef = FB55CD641AE06840007B8A1D /* starBla.png */; };
+		FB83296C1AEB9A4700B8012D /* ADPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB83296A1AEB9A4700B8012D /* ADPPhotoViewController.m */; };
+		FB83296D1AEB9A4700B8012D /* ADPPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB83296B1AEB9A4700B8012D /* ADPPhotoViewController.xib */; };
 		FBBFD7CA1ADE5F2000A204A4 /* ADPLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7C91ADE5F2000A204A4 /* ADPLibraryViewController.m */; };
 		FBBFD7D71ADE623C00A204A4 /* UIViewController+Navigation.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7D61ADE623C00A204A4 /* UIViewController+Navigation.m */; };
 		FBBFD7DC1ADE658700A204A4 /* ADPBooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7DA1ADE658700A204A4 /* ADPBooksViewController.m */; };
@@ -86,6 +88,9 @@
 		FB55CD621AE06840007B8A1D /* yodaReading.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yodaReading.jpg; sourceTree = "<group>"; };
 		FB55CD631AE06840007B8A1D /* starYe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starYe.png; sourceTree = "<group>"; };
 		FB55CD641AE06840007B8A1D /* starBla.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starBla.png; sourceTree = "<group>"; };
+		FB8329691AEB9A4700B8012D /* ADPPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPPhotoViewController.h; sourceTree = "<group>"; };
+		FB83296A1AEB9A4700B8012D /* ADPPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPPhotoViewController.m; sourceTree = "<group>"; };
+		FB83296B1AEB9A4700B8012D /* ADPPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADPPhotoViewController.xib; sourceTree = "<group>"; };
 		FBBFD7C81ADE5F2000A204A4 /* ADPLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPLibraryViewController.h; sourceTree = "<group>"; };
 		FBBFD7C91ADE5F2000A204A4 /* ADPLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPLibraryViewController.m; sourceTree = "<group>"; };
 		FBBFD7D51ADE623C00A204A4 /* UIViewController+Navigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Navigation.h"; sourceTree = "<group>"; };
@@ -285,6 +290,9 @@
 				FBD86D4C1AE565D0001859E2 /* ADPAnnotationViewController.h */,
 				FBD86D4D1AE565D0001859E2 /* ADPAnnotationViewController.m */,
 				FBD86D4E1AE565D0001859E2 /* ADPAnnotationViewController.xib */,
+				FB8329691AEB9A4700B8012D /* ADPPhotoViewController.h */,
+				FB83296A1AEB9A4700B8012D /* ADPPhotoViewController.m */,
+				FB83296B1AEB9A4700B8012D /* ADPPhotoViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -370,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBD86D481AE4F3F4001859E2 /* ADPSimplePDFViewController.xib in Resources */,
+				FB83296D1AEB9A4700B8012D /* ADPPhotoViewController.xib in Resources */,
 				FBCC28B91ADBBF8E002C36BF /* LaunchScreen.xib in Resources */,
 				FB55CD651AE06840007B8A1D /* yodaReading.jpg in Resources */,
 				FBBFD7DD1ADE658700A204A4 /* ADPBooksViewController.xib in Resources */,
@@ -413,6 +422,7 @@
 				FBD86D4B1AE50407001859E2 /* ADPAnnotationsViewController.m in Sources */,
 				FB39179A1ADD84D50073C2A9 /* ADPLocalization.m in Sources */,
 				FB39179B1ADD84D50073C2A9 /* ADPPdf.m in Sources */,
+				FB83296C1AEB9A4700B8012D /* ADPPhotoViewController.m in Sources */,
 				FBCC28D81ADC2B74002C36BF /* Model.xcdatamodeld in Sources */,
 				FB3917981ADD84D50073C2A9 /* ADPAuthor.m in Sources */,
 				FBCC28D51ADC29F5002C36BF /* AGTCoreDataStack.m in Sources */,

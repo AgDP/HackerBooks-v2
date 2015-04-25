@@ -35,7 +35,7 @@
     </entity>
     <entity name="Photo" representedClassName="ADPPhoto" syncable="YES">
         <attribute name="photoData" attributeType="Binary" syncable="YES"/>
-        <attribute name="photoUrl" attributeType="String" syncable="YES"/>
+        <attribute name="photoUrl" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="annotation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Annotation" inverseName="photo" inverseEntity="Annotation" syncable="YES"/>
         <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="photo" inverseEntity="Book" syncable="YES"/>
     </entity>
@@ -49,7 +49,7 @@
         <element name="Book" positionX="88" positionY="-81" width="128" height="150"/>
         <element name="Localization" positionX="-522" positionY="-108" width="128" height="103"/>
         <element name="PDF" positionX="286" positionY="-204" width="128" height="90"/>
-        <element name="Photo" positionX="-279" positionY="69" width="128" height="103"/>
+        <element name="Photo" positionX="-279" positionY="69" width="128" height="105"/>
         <element name="Tag" positionX="90" positionY="174" width="128" height="75"/>
     </elements>
 </model>
