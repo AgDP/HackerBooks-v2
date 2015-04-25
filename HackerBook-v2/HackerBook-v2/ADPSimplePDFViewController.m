@@ -18,11 +18,12 @@
 
 @implementation ADPSimplePDFViewController
 
--(id)initWithModel:(ADPBook *) book{
+-(id)initWithModel:(ADPBook *) book andContext: (NSManagedObjectContext *) context{
     
     if (self = [super initWithNibName:nil
                                bundle:nil]) {
         _model = book;
+        _context = context;
         
         NSMutableString *title = [[NSMutableString alloc] init];
         [title appendString:book.title];
@@ -70,52 +71,69 @@
 
 #pragma mark - Util
 -(void) syncWithModel{
-    
-  
-    NSURL *url = [NSURL URLWithString:self.model.pdf.pdfUrl ];
-    
-    [self.pdfView loadRequest:[NSURLRequest requestWithURL:url]];
-    
-    //[self.activityView stopAnimating];
-    //self.activityView.hidden = YES;
 
+    NSMutableString *nombrePdf = [[NSMutableString alloc] init];
+    [nombrePdf appendString:@"Documents/HackerBook/Data/"];
+    [nombrePdf appendString:self.model.title];
+    [nombrePdf appendString:@".pdf"];
     
-    /*
-    NSFileManager *fm = [NSFileManager defaultManager];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSURL *localURL = [self localURLForRemoteURL:self.model.pdfURL];
-    if ([fm fileExistsAtPath:[localURL path]]) {
-        [self.pdfView loadData:[NSData dataWithContentsOfURL:localURL]
-                      MIMEType:@"application/pdf"
-              textEncodingName:@"UTF-8"
-                       baseURL:nil];
+    NSString  *pdfFile = [NSHomeDirectory() stringByAppendingPathComponent:nombrePdf];
+    
+    if (![fileManager fileExistsAtPath:pdfFile]){
+        
+        ADPPdf *pdf = [NSEntityDescription insertNewObjectForEntityForName:@"PDF"
+                                                    inManagedObjectContext:self.context];
+        
+        UIImage* image = [UIImage imageNamed:@"emptyBookCover.png"];
+        pdf.pdfData = UIImageJPEGRepresentation(image, 0.9);
+        pdf.pdfUrl = self.model.pdf.pdfUrl;
+        
+        self.model.pdf = pdf;
+        
+        [self downloadPdf:pdf withNSManagedObjectContext: self.context];
         
     }else{
-        // No está en local
-        // Hay que descargar y guardar
-        self.activityView.hidden = NO;
-        [self.activityView startAnimating];
+        // El fichero ya está cacheado en local, lo leemos
         
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
-            NSData *data = [NSData dataWithContentsOfURL:self.model.pdfURL];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.pdfView loadData:data
-                              MIMEType:@"application/pdf"
-                      textEncodingName:@"UTF-8"
-                               baseURL:nil];
-                
-                [self.activityView stopAnimating];
-                self.activityView.hidden = YES;
-                
-                [data writeToURL:localURL
-                      atomically:YES];
-            });
-        });
+        NSString  *pdfFile = [NSHomeDirectory() stringByAppendingPathComponent:nombrePdf];
+        
+        NSData *data =[NSData dataWithContentsOfFile:pdfFile];
+        
+        self.activityView.hidden = YES;
+        [self.activityView stopAnimating];
+        
+        [self.pdfView loadData:data MIMEType:@"application/pdf" textEncodingName:@"utf-8" baseURL:nil];
+        
+        
     }
-     */
+    
+
+}
+
+-(void) downloadPdf: (ADPPdf *) pdf withNSManagedObjectContext: (NSManagedObjectContext *) context{
+    
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0),
+                   ^{
+                       NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:pdf.pdfUrl]];
+                       
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                           // Lo hago en primer plano para asegurarme de
+                           // todas las ntificaciones van en la ocla
+                           // principal
+                           [ADPPdf setNewImageWithData:data intoPdf: pdf andNSManagedObjectContext: context];
+                           
+                           self.activityView.hidden = YES;
+                           [self.activityView stopAnimating];
+                           
+                           [self.pdfView loadData:data MIMEType:@"application/pdf" textEncodingName:@"utf-8" baseURL:nil];
+                           
+                       });
+                   });
     
 }
+
 
 
 -(NSURL*)documentsDirectory{

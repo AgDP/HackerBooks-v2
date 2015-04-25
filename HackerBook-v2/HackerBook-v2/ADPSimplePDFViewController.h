@@ -15,9 +15,10 @@
 @property (weak, nonatomic) IBOutlet UIWebView *pdfView;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
+@property(nonatomic, strong) NSManagedObjectContext *context;
 
 -(IBAction)displayAnnotations:(id)sender;
 
--(id)initWithModel:(ADPBook *) book;
+-(id)initWithModel:(ADPBook *) book andContext: (NSManagedObjectContext *) context;
 
 @end

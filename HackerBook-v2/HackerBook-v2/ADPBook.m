@@ -28,14 +28,15 @@
     
     [ADPPhoto addPhotoWithName: titulo andURL: urlPhoto context:context book:book];
     
+    [ADPPdf addPdfWithName:titulo andURL:urlPDF context:context book:book];
 #warning Provisional
-    ADPPdf *pdf = [NSEntityDescription insertNewObjectForEntityForName:@"PDF"
+   /* ADPPdf *pdf = [NSEntityDescription insertNewObjectForEntityForName:@"PDF"
                                                 inManagedObjectContext:context];
     pdf.pdfData = [NSData new];
     pdf.pdfUrl = urlPDF;
     
     book.pdf = pdf;
-
+    */
     return book;
 }
 

@@ -118,7 +118,7 @@
     
     // Crear un PDFVC
     ADPSimplePDFViewController *pdfVC = [[ADPSimplePDFViewController alloc]
-                                         initWithModel:self.model];
+                                         initWithModel:self.model andContext:self.fetchedResultsController.managedObjectContext];
     // Hacer un push
     [self.navigationController pushViewController:pdfVC
                                          animated:YES];
