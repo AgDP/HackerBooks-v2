@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.photo.image = [self.model.photo image];
+    self.photo.image = [UIImage imageWithData:self.model.photo.photoData];
     self.authors.text = self.model.authorsWithNameAndSeparate;
     self.tags.text = self.model.tagsWithNameAndSeparate;
     

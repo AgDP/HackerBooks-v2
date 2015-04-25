@@ -69,7 +69,7 @@
     }
     
     // Configurarla (sincronizar libreta -> celda)
-    cell.imageView.image = [book.photo image];
+    cell.imageView.image = [UIImage imageWithData:book.photo.photoData];
     cell.textLabel.text = book.title;
     cell.detailTextLabel.text = book.authorsWithNameAndSeparate;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

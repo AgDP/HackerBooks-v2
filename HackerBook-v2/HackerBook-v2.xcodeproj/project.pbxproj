@@ -26,6 +26,7 @@
 		FB55CD671AE06840007B8A1D /* starBla.png in Resources */ = {isa = PBXBuildFile; fileRef = FB55CD641AE06840007B8A1D /* starBla.png */; };
 		FB83296C1AEB9A4700B8012D /* ADPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB83296A1AEB9A4700B8012D /* ADPPhotoViewController.m */; };
 		FB83296D1AEB9A4700B8012D /* ADPPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB83296B1AEB9A4700B8012D /* ADPPhotoViewController.xib */; };
+		FB83296F1AEBD70D00B8012D /* emptyBookCover.png in Resources */ = {isa = PBXBuildFile; fileRef = FB83296E1AEBD70D00B8012D /* emptyBookCover.png */; };
 		FBBFD7CA1ADE5F2000A204A4 /* ADPLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7C91ADE5F2000A204A4 /* ADPLibraryViewController.m */; };
 		FBBFD7D71ADE623C00A204A4 /* UIViewController+Navigation.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7D61ADE623C00A204A4 /* UIViewController+Navigation.m */; };
 		FBBFD7DC1ADE658700A204A4 /* ADPBooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBFD7DA1ADE658700A204A4 /* ADPBooksViewController.m */; };
@@ -91,6 +92,7 @@
 		FB8329691AEB9A4700B8012D /* ADPPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPPhotoViewController.h; sourceTree = "<group>"; };
 		FB83296A1AEB9A4700B8012D /* ADPPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPPhotoViewController.m; sourceTree = "<group>"; };
 		FB83296B1AEB9A4700B8012D /* ADPPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADPPhotoViewController.xib; sourceTree = "<group>"; };
+		FB83296E1AEBD70D00B8012D /* emptyBookCover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyBookCover.png; sourceTree = "<group>"; };
 		FBBFD7C81ADE5F2000A204A4 /* ADPLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPLibraryViewController.h; sourceTree = "<group>"; };
 		FBBFD7C91ADE5F2000A204A4 /* ADPLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPLibraryViewController.m; sourceTree = "<group>"; };
 		FBBFD7D51ADE623C00A204A4 /* UIViewController+Navigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Navigation.h"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		FB55CD611AE0682D007B8A1D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FB83296E1AEBD70D00B8012D /* emptyBookCover.png */,
 				FB55CD621AE06840007B8A1D /* yodaReading.jpg */,
 				FB55CD631AE06840007B8A1D /* starYe.png */,
 				FB55CD641AE06840007B8A1D /* starBla.png */,
@@ -377,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB83296F1AEBD70D00B8012D /* emptyBookCover.png in Resources */,
 				FBD86D481AE4F3F4001859E2 /* ADPSimplePDFViewController.xib in Resources */,
 				FB83296D1AEB9A4700B8012D /* ADPPhotoViewController.xib in Resources */,
 				FBCC28B91ADBBF8E002C36BF /* LaunchScreen.xib in Resources */,

@@ -13,23 +13,97 @@
 
 +(void) addPhotoWithName: (NSString *) titulo andURL: (NSString *) urlPhoto context: (NSManagedObjectContext *) context book: (ADPBook *) book{
     
+    UIImage* image = [UIImage imageNamed:@"emptyBookCover.png"];
     
     NSMutableString *nombreLibro = [[NSMutableString alloc] init];
     [nombreLibro appendString:@"Documents/HackerBook/Pictures/"];
-    [nombreLibro appendString:titulo];
+    [nombreLibro appendString:urlPhoto];
     [nombreLibro appendString:@".jpg"];
     
-    //Averiguar la URL a la carpeta Documents
-    NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:nombreLibro];
-    UIImage* image = [UIImage imageWithContentsOfFile:jpgPath];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    ADPPhoto *photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
-                                                inManagedObjectContext:context];
+    NSString  *photoFile = [NSHomeDirectory() stringByAppendingPathComponent:nombreLibro];
     
-    photo.photoData = UIImageJPEGRepresentation(image, 0.9);
-    photo.photoUrl = urlPhoto;
+    if (![fileManager fileExistsAtPath:photoFile]){
+        ADPPhoto *photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
+                                                        inManagedObjectContext:context];
+        
+        photo.photoData = UIImageJPEGRepresentation(image, 0.9);
+        photo.photoUrl = urlPhoto;
+        
+        book.photo = photo;
+        
+        [self downloadImage:photo withNSManagedObjectContext: context];
+        
+    }else{
+        // El fichero ya está cacheado en local, lo leemos
+        image = [UIImage imageWithData:
+                  [NSData dataWithContentsOfURL:[NSURL URLWithString:nombreLibro]]];
+        
+        ADPPhoto *photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"
+                                                        inManagedObjectContext:context];
+        
+        photo.photoData = UIImageJPEGRepresentation(image, 0.9);
+        photo.photoUrl = urlPhoto;
+        
+        book.photo = photo;
+
+    }
+
+}
+
+#pragma mark - Remote Image
++(void) downloadImage: (ADPPhoto *) photo withNSManagedObjectContext: (NSManagedObjectContext *) context{
     
-    book.photo = photo;
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0),
+                   ^{
+                       NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:photo.photoUrl]];
+                       
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                           // Lo hago en primer plano para asegurarme de
+                           // todas las ntificaciones van en la ocla
+                           // principal
+                           [self setNewImageWithData:data intoPhoto: photo andNSManagedObjectContext: context];
+                       });
+                   });
+    
+}
++(void) setNewImageWithData:(NSData *) data intoPhoto:(ADPPhoto *) photo andNSManagedObjectContext: (NSManagedObjectContext *) context{
+    
+    
+    
+    // Guardo la imagen en  (con el nombre que tenia en la url
+    // original.
+    //NSURL *localURL = [self localURLForRemoteURL:self.remoteImageURL];
+    //[data writeToURL:localURL atomically:YES];
+    
+    // Asigno como nueva imagen (esto envía notificación de KVO)
+    //photo.image = [UIImage imageWithData:data];
+    photo.photoData = data;
+    
+    NSError *error;
+    [context save:&error];
+    
+    [self setupNotifications];
+    [self saveImagesIntoDcouments:photo];
+}
+
++(void) saveImagesIntoDcouments: (ADPPhoto *) photo{
+
+        
+        //Guardamos la imagen con el nombre del libro + jpg
+        NSMutableString *nombreLibro = [[NSMutableString alloc] init];
+        [nombreLibro appendString:@"Documents/HackerBook/Pictures/"];
+        [nombreLibro appendString:photo.photoUrl];
+        [nombreLibro appendString:@".jpg"];
+        
+        //Averiguar la URL a la carpeta Documents
+        NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:nombreLibro];
+        
+        
+        
+        [photo.photoData writeToFile:jpgPath atomically:YES];
+    
 }
 
 -(void) setImage:(UIImage *)image{
@@ -58,6 +132,18 @@
     
     // Convertir la UIImage en un NSData
     self.photoData = UIImageJPEGRepresentation(photo.image, 0.9);
+}
+
+#pragma mark - Notifications
++(void) setupNotifications{
+    
+    NSNotification *n = [NSNotification
+                         notificationWithName:@"CHANGE_BOOKS_IN_TAGS"
+                         object:self
+                         userInfo:@{@"bookFavorite" : self}];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:n];
+    
 }
 
 @end

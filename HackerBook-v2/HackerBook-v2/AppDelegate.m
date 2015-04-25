@@ -129,7 +129,6 @@
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
                                                          options:0
                                                            error:nil];
-    [self saveImagesIntoDcouments: (NSDictionary *) json];
     
     [self cargarDatosEnModelo: (NSDictionary *) json];
 }
@@ -154,41 +153,6 @@
     
 }
 
--(void) saveImagesIntoDcouments: (NSDictionary *) json{
-    
-    NSString  *folderHackerBook = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/HackerBook/Pictures/"];
-    NSError *err;
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager createDirectoryAtPath:folderHackerBook withIntermediateDirectories:YES attributes:nil error:&err];
-    
-    
-    
-    NSDictionary *dictobj = json;
-    for (id key in dictobj)
-    {
-        NSDictionary *value = key;
-        //      [book11 setTitulo:[value objectForKey:@"pdf_url"]];
-        
-        
-        NSData *bookImage = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[[value objectForKey:@"image_url"] description]]];
-        
-        //Guardamos la imagen con el nombre del libro + jpg
-        NSMutableString *nombreLibro = [[NSMutableString alloc] init];
-        [nombreLibro appendString:@"Documents/HackerBook/Pictures/"];
-        [nombreLibro appendString:[value objectForKey:@"title"]];
-        [nombreLibro appendString:@".jpg"];
-        
-        //Averiguar la URL a la carpeta Documents
-        NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:nombreLibro];
-        
-        
-        
-        [bookImage writeToFile:jpgPath atomically:YES];
-        
-    }
-    
-}
 
 -(void) cargarDatosEnModelo: (NSDictionary *) json{
     
@@ -199,7 +163,7 @@
     {
         NSDictionary *value = key;
         
-        ADPBook *book = [ADPBook initWithTitulo:[value objectForKey:@"title"]
+        [ADPBook initWithTitulo:[value objectForKey:@"title"]
                                      isFavorite:NO
                                          author:[value objectForKey:@"authors"]
                                            tags:[value objectForKey:@"tags"]
