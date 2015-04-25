@@ -109,7 +109,10 @@
 -(void) setImage:(UIImage *)image{
     
     // Convertir la UIImage en un NSData
-    self.photoData = UIImageJPEGRepresentation(image, 0.9);
+    if (image) {
+        self.photoData = UIImageJPEGRepresentation(image, 0.9);
+    }
+    
 }
 
 -(UIImage *) image{

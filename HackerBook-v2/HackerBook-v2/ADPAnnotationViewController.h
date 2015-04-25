@@ -25,5 +25,6 @@
 
 - (IBAction)displayPhoto:(id)sender;
 - (IBAction)displayShare:(id)sender;
+- (IBAction)displayRemove:(id)sender;
 
 @end

@@ -85,6 +85,8 @@
     
     
     
+    
+    
     // La eliminamos del modelo
     self.model.image = nil;
     
@@ -106,6 +108,11 @@
         self.photoView.image = nil;
         
     }];
+    
+    [self.context deleteObject:self.model];
+    
+    NSError *error;
+    [self.context save:&error];
 }
 
 #pragma mark - UIImagePickerControllerDelegate

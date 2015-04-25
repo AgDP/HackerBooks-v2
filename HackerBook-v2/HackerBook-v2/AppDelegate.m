@@ -80,7 +80,6 @@
     [split setViewControllers:@[[libraryVC wrappedInNavigation],[booksVC wrappedInNavigation]]];
     
     //Asignamos delegados
-#warning Crear
     split.delegate = booksVC;
     libraryVC.delegate = booksVC;
     
@@ -155,7 +154,6 @@
 
 
 -(void) cargarDatosEnModelo: (NSDictionary *) json{
-    
     
     
     NSDictionary *dictobj = json;

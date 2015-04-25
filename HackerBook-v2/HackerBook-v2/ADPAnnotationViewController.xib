@@ -71,7 +71,7 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2N-IG-suF">
                     <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                     <items>
-                        <barButtonItem title="Take Photo" id="jLG-c7-4gz">
+                        <barButtonItem title="Photo" id="jLG-c7-4gz">
                             <connections>
                                 <action selector="displayPhoto:" destination="-1" id="365-Vo-tMZ"/>
                             </connections>
@@ -83,7 +83,11 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="aEe-xW-TKz"/>
-                        <barButtonItem systemItem="trash" id="euh-gJ-EFK"/>
+                        <barButtonItem systemItem="trash" id="euh-gJ-EFK">
+                            <connections>
+                                <action selector="displayRemove:" destination="-1" id="iPq-mW-YSh"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
             </subviews>

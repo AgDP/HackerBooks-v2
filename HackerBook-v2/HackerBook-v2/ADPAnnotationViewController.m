@@ -10,6 +10,7 @@
 #import "ADPAnnotation.h"
 #import "ADPPhotoViewController.h"
 #import "ADPPhoto.h"
+#import "ADPAnnotationsViewController.h"
 
 @interface ADPAnnotationViewController ()
 
@@ -85,6 +86,20 @@
     //Push
     [self.navigationController pushViewController:pVc animated:YES];
    
+}
+
+- (IBAction)displayShare:(id)sender{
+    
+}
+
+- (IBAction)displayRemove:(id)sender{
+    
+    [self.context deleteObject:self.model];
+    
+    
+    //Me muevo al controlador por encima
+    //Buscar una forma mejor de hacer esto
+    
 }
 
 
