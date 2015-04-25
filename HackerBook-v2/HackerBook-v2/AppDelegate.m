@@ -58,9 +58,6 @@
         }
     }
     
-    
-    
-    
     //Un fetchRequest
     NSFetchRequest *fetchReq = [NSFetchRequest fetchRequestWithEntityName:[ADPTag entityName]];
     fetchReq.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:ADPTagAttributes.name ascending:YES selector:@selector(caseInsensitiveCompare:)]];
@@ -69,23 +66,19 @@
     //FetchRequestController
     NSFetchedResultsController *fc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchReq managedObjectContext:self.stack.context sectionNameKeyPath:nil cacheName:nil];
     
-    //Creamos los controladores
-    ADPLibraryViewController *libraryVC = [[ADPLibraryViewController alloc] initWithFetchedResultsController:fc style:UITableViewStylePlain];
-    ADPBooksViewController *booksVC = [[ADPBooksViewController alloc] initWithFetchResultController:fc];
+    //Detectamos el tipo de pantalla
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        
+        //Tipo tableta
+        [self configureForPadWithFetchedResultsController: (NSFetchedResultsController *) fc];
+    }else{
+        
+        //Tipo teléfono
+        [self configureForPhoneWithFetchedResultsController: (NSFetchedResultsController *) fc];
+    }
     
     
-    //Creo el Combinador
-    UISplitViewController *split = [[UISplitViewController alloc] init];
     
-    [split setViewControllers:@[[libraryVC wrappedInNavigation],[booksVC wrappedInNavigation]]];
-    
-    //Asignamos delegados
-    split.delegate = booksVC;
-    libraryVC.delegate = booksVC;
-    
-    self.window.backgroundColor = [UIColor whiteColor];
-    
-    self.window.rootViewController = split;
     
     [self.window makeKeyAndVisible];
     
@@ -175,6 +168,49 @@
         }];
     }
 
+}
+
+-(void) configureForPadWithFetchedResultsController: (NSFetchedResultsController *) fc{
+    
+    //Creamos los controladores
+    ADPLibraryViewController *libraryVC = [[ADPLibraryViewController alloc] initWithFetchedResultsController:fc style:UITableViewStylePlain];
+    ADPBooksViewController *booksVC = [[ADPBooksViewController alloc] initWithFetchResultController:fc];
+    
+    
+    //Creo el Combinador
+    UISplitViewController *split = [[UISplitViewController alloc] init];
+    
+    [split setViewControllers:@[[libraryVC wrappedInNavigation],[booksVC wrappedInNavigation]]];
+    
+    //Asignamos delegados
+    split.delegate = booksVC;
+    libraryVC.delegate = booksVC;
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    self.window.rootViewController = split;
+    
+}
+
+-(void) configureForPhoneWithFetchedResultsController: (NSFetchedResultsController *) fc{
+    
+    
+    
+    //Creo el controlador
+    ADPLibraryViewController *libraryVC = [[ADPLibraryViewController alloc] initWithFetchedResultsController:fc style:UITableViewStylePlain];
+    
+    //Creo el combinador
+    UINavigationController *navLib = [UINavigationController new];
+    
+    [navLib pushViewController:libraryVC animated:NO];
+    
+    //Asigno delegado
+    libraryVC.delegate = libraryVC;
+    
+    //La pinto
+    self.window.rootViewController = navLib;
+    
+    
 }
 
 @end

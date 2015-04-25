@@ -30,8 +30,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="sAw-WR-Nd6">
-                    <rect key="frame" x="366" y="493" width="20" height="20"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="sAw-WR-Nd6">
+                    <rect key="frame" x="374" y="502" width="20" height="20"/>
                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </activityIndicatorView>
             </subviews>
@@ -43,6 +43,8 @@
                 <constraint firstItem="t8W-Um-qN6" firstAttribute="leading" secondItem="3Vc-4K-QQI" secondAttribute="leading" id="2x2-um-edr"/>
                 <constraint firstItem="t8W-Um-qN6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3hW-3s-pAU"/>
                 <constraint firstAttribute="trailing" secondItem="3Vc-4K-QQI" secondAttribute="trailing" id="LOQ-3C-Z13"/>
+                <constraint firstAttribute="centerX" secondItem="sAw-WR-Nd6" secondAttribute="centerX" id="VYw-4I-swA"/>
+                <constraint firstAttribute="centerY" secondItem="sAw-WR-Nd6" secondAttribute="centerY" id="jut-74-2do"/>
                 <constraint firstAttribute="bottom" secondItem="3Vc-4K-QQI" secondAttribute="bottom" id="qOd-aE-joZ"/>
             </constraints>
             <point key="canvasLocation" x="458" y="497"/>

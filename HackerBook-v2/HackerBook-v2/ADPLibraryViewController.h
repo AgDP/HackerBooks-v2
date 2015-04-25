@@ -17,7 +17,7 @@
 
 @end
 
-@interface ADPLibraryViewController : AGTCoreDataTableViewController <UISearchResultsUpdating, UISearchBarDelegate>
+@interface ADPLibraryViewController : AGTCoreDataTableViewController <ADPLibraryViewControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate>
 
 @property (weak, nonatomic) id<ADPLibraryViewControllerDelegate> delegate;
 

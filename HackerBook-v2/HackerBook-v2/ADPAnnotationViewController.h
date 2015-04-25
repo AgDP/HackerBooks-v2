@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 @class ADPAnnotation;
 
-@interface ADPAnnotationViewController : UIViewController
+@interface ADPAnnotationViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UILabel *titleAnnotation;
+@property (weak, nonatomic) IBOutlet UITextField *titleAnnotation;
 @property (weak, nonatomic) IBOutlet UILabel *creationDateView;
 @property (weak, nonatomic) IBOutlet UILabel *modificationDateView;
 @property (nonatomic, strong) ADPAnnotation *model;

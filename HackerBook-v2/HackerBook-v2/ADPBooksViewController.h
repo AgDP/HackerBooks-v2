@@ -25,7 +25,7 @@
 -(IBAction)markFavorite:(id)sender;
 -(IBAction)displayAnnotation:(id)sender;
 
--(id) initWithModel:(ADPBook *) model;
+-(id) initWithModel:(ADPBook *) model andFetchResultController:(NSFetchedResultsController *) fetchedResultsController;
 -(id) initWithFetchResultController:(NSFetchedResultsController *) fetchedResultsController;
 
 @end

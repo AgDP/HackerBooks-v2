@@ -21,14 +21,6 @@
 
 @implementation ADPBooksViewController
 
--(id) initWithModel:(ADPBook *) model{
-    
-    if (self = [super initWithNibName:nil bundle:nil]) {
-        _model = model;
-    }
-    
-    return self;
-}
 
 -(id) initWithFetchResultController:(NSFetchedResultsController *) fetchedResultsController{
     
@@ -38,6 +30,17 @@
     
     return self;
 }
+
+-(id) initWithModel:(ADPBook *) model andFetchResultController:(NSFetchedResultsController *) fetchedResultsController{
+    
+    if (self = [super initWithNibName:nil bundle:nil]) {
+         _model = model;
+        _fetchedResultsController = fetchedResultsController;
+    }
+    
+    return self;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,10 +64,9 @@
     }
     
     //[self hiddenPortada];
+
     
-    
-    
-    if (self.model.isFavorite  != 0) {
+    if (self.model.isFavoriteValue) {
         UIImage *butYe = [[UIImage imageNamed:@"starYe.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [self.favorite setImage:butYe forState:UIControlStateNormal];
     }else{

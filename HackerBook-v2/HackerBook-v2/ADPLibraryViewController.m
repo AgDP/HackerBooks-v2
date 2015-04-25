@@ -111,7 +111,7 @@
 -(void) libraryTableViewController: (ADPLibraryViewController *)library didSelectedBook: (ADPBook *)book{
     
     //Creamos un book
-    ADPBooksViewController *bookController = [[ADPBooksViewController alloc] initWithModel:book];
+    ADPBooksViewController *bookController = [[ADPBooksViewController alloc] initWithModel:book andFetchResultController:self.fetchedResultsController];
     
     //Hago un push
     [self.navigationController pushViewController:bookController animated:YES];

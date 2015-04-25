@@ -35,13 +35,7 @@
     [super viewWillAppear:animated];
     
     // Asignamos delegados
-    //self.nameView.delegate = self;
-    
-    // Alta en notificaciones de teclado
-    //[self setupKeyboardNotifications];
-    
-    
-    // Sincornizar modelo -> Vista
+    self.titleAnnotation.delegate = self;
     
     // Fechas
     NSDateFormatter *fmt = [NSDateFormatter new];
@@ -54,6 +48,7 @@
     self.title = self.model.name;
     
     self.titleAnnotation.text = self.model.name;
+    
     // Texto
     self.textView.text = self.model.text;
     
@@ -73,6 +68,27 @@
     
     self.model.name = self.titleAnnotation.text;
     self.model.text = self.textView.text;
+}
+
+#pragma mark - UITextFieldDelegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    // Buen momento para validar el texto
+    
+    [textField resignFirstResponder];
+    
+    
+    return YES;
+}
+
+-(void) textFieldDidEndEditing:(UITextField *)textField{
+    
+    // Buen momento para guardar el texto
+    self.model.name = textField.text;
+    
+    NSError *error;
+    
+    [self.context save:&error];
 }
 
 
