@@ -162,7 +162,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [ADPAnnotation annotationWithName:@"New annotation" book:self.model context:self.fetchedResultsController.managedObjectContext];
     
     NSError *error;
-    BOOL saved = [self.fetchedResultsController.managedObjectContext save:&error];
+    [self.fetchedResultsController.managedObjectContext save:&error];
 
 }
 

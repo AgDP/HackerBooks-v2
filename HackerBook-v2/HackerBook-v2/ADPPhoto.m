@@ -131,7 +131,7 @@
     
     NSError * error;
     
-    BOOL save = [context save:&error];
+    [context save:&error];
     
     // Convertir la UIImage en un NSData
     self.photoData = UIImageJPEGRepresentation(photo.image, 0.9);

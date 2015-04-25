@@ -26,7 +26,7 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
-                <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t8W-Um-qN6">
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8W-Um-qN6">
                     <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
@@ -39,6 +39,9 @@
             <constraints>
                 <constraint firstItem="3Vc-4K-QQI" firstAttribute="top" secondItem="t8W-Um-qN6" secondAttribute="bottom" id="0Ju-0v-Fyx"/>
                 <constraint firstItem="3Vc-4K-QQI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0Ju-K6-eGq"/>
+                <constraint firstItem="t8W-Um-qN6" firstAttribute="trailing" secondItem="3Vc-4K-QQI" secondAttribute="trailing" id="2Ch-Qr-Rrf"/>
+                <constraint firstItem="t8W-Um-qN6" firstAttribute="leading" secondItem="3Vc-4K-QQI" secondAttribute="leading" id="2x2-um-edr"/>
+                <constraint firstItem="t8W-Um-qN6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3hW-3s-pAU"/>
                 <constraint firstAttribute="trailing" secondItem="3Vc-4K-QQI" secondAttribute="trailing" id="LOQ-3C-Z13"/>
                 <constraint firstAttribute="bottom" secondItem="3Vc-4K-QQI" secondAttribute="bottom" id="qOd-aE-joZ"/>
             </constraints>
