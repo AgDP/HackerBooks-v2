@@ -30,9 +30,7 @@
     
     //Asigno las secciones
     
-    NSMutableArray *tags = [[NSMutableArray alloc] init];
-    
-    tags = [[self.fetchedResultsController fetchedObjects] mutableCopy];
+    NSMutableArray *tags = [[self.fetchedResultsController fetchedObjects] mutableCopy];
     
     [tags sortedArrayUsingSelector:@selector(compare:)];
     

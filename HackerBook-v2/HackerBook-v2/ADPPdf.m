@@ -24,22 +24,7 @@
         
 }
 
-#pragma mark - Remote Pdf
-+(void) downloadPdf: (ADPPdf *) pdf withNSManagedObjectContext: (NSManagedObjectContext *) context{
-    
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0),
-                   ^{
-                       NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:pdf.pdfUrl]];
-                       
-                       dispatch_async(dispatch_get_main_queue(), ^{
-                           // Lo hago en primer plano para asegurarme de
-                           // todas las ntificaciones van en la ocla
-                           // principal
-                           [self setNewImageWithData:data intoPdf: pdf andNSManagedObjectContext: context];
-                       });
-                   });
-    
-}
+
 +(void) setNewImageWithData:(NSData *) data intoPdf:(ADPPdf *) pdf andNSManagedObjectContext: (NSManagedObjectContext *) context{
     
     

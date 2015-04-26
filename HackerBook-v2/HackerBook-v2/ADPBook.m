@@ -42,7 +42,6 @@
         [authorsString appendString:author.name];
         [authorsString appendString:@", "];
     }
-#warning Cambiar para que no salga la coma siempre detras del último
     
     return authorsString;
 }
@@ -56,7 +55,6 @@
         [tagsString appendString:tag.name];
         [tagsString appendString:@", "];
     }
-#warning Cambiar para que no salga la coma siempre detras del último
     
     return tagsString;
     

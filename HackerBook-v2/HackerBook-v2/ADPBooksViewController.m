@@ -149,10 +149,8 @@
 
 -(IBAction)markFavorite:(id)sender{
     
-#warning Solucionnnnnnnnnnnn provicional
+#warning Solucionnnnnnnnnnnn provicional. Ver porque falla si no pongo el delegado a nil cuando se actualizan los datos.
     self.fetchedResultsController.delegate  = nil;
-    
-    NSLog(@"fetttt primero %d",[[self.fetchedResultsController fetchedObjects]count]);
     
     UIButton *button = (UIButton *)sender;
     ADPBook *book = self.model;
@@ -184,8 +182,7 @@
     [self.fetchedResultsController setValue:[self.fetchedResultsController fetchedObjects] forKey:@"sections"];
     
     [self setupNotifications];
-    //[self.fetchedResultsController.delegate controllerWillChangeContent:self.fetchedResultsController];
-    NSLog(@"fetttt %d",[[self.fetchedResultsController fetchedObjects]count]);
+
     
 }
 
